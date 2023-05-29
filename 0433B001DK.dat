@@ -1,0 +1,1648 @@
+; ------------------------------------------------------
+; File:        0433B001DK.DAT
+; ------------------------------------------------------
+; Date:        25.08.2022 - 17:04:42
+; Created by:  CfgExport V 1.2 - 25-Sep-2003
+; ------------------------------------------------------
+
+\Temp\00000D88\3504af2c-e9fb-48f7-9eaf-2e1cc1bb38f0\DataManager\TypeDataFileFU1\FU1
+  _Format = REG_DWORD 0x0
+  _Id = "529bf5c3-297c-49b4-a6a7-049b98c33466"
+  _VersionDate = "4.479871159722e+004"
+  _User = "WXCRHE10, WXCRHE10\OpconUser, WXCRHE10\Supervisor"
+  Security = REG_DWORD 0x102
+  General #Index
+    StructName = "TypeDataGeneralStruct"
+    Properties
+      Label_D = "Allgemein"
+      Label_E = "General"
+      Label_P = "Geral"
+      Label_T = "Genel"
+    TTNr
+      VarType = REG_DWORD 0x8
+      Data = "0433B001DK"
+      Properties
+        Label_D = "Typnummer"
+        Label_E = "Type Number"
+        Label_P = "Número do tipo"
+        Label_T = "Tip numarasi"
+        Template = "#### ### ###"
+        Mask = "AAAA AAA AAA"
+    Unit
+      VarType = REG_DWORD 0x3
+      Data = "0"
+      StringTable = "QUnit"
+      Properties
+        Label_D = "Zeiteinheit für Durchfluss cm³ /"
+        Label_E = "Timeunit for flow cm³ /"
+        Label_P = "Unidade de tempo para fluxo cm¦ /"
+        Label_T = "Akis cm³ / için zaman birimi"
+        ValueFontSize = REG_DWORD 0x12
+        SelectValues = "|0|30s|1|min"
+        ValueWidth = REG_DWORD 0x64
+    Modus
+      VarType = REG_DWORD 0x3
+      Data = "3"
+      StringTable = "AutoMode"
+      Properties
+        Label_D = "Betriebsmodus Automatik"
+        Label_E = "Automatic Mode"
+        Label_P = "Modo de operação Automático"
+        Label_T = "Otomatik calisma konumu"
+        SelectValues_D = "|1|HE-Menge 1a|2|HE-Menge+PRnHE 1b|3|HE-Menge+PRvHEoGD+PRnHE 1c|4|HE-Menge+PRvHEmGD+PRnHE 1d|5|HE-Zeit 2a|6|HE-Zeit+PRnHE 2b|7|HE-Zeit+PRvHEoGD+PRnHE 2c|8|HE-Einschleifen(1<n<5) 3a|9|HE-Trend(6<n<50) 3b|10|HE-Trend(6<n<50)+NA 3c|11|PRvHEoGD 4a|12|PRvHEmGD 4b|13|PRvHEoGD+mGD 4c|14|PRnHE1HD 4d|16|HE-Iterativ 5|17|HE-Eingangswertkorr 6|18|HE-Trend/Zeit/kein 7|29|Parameterermittlung Modus 6"
+        SelectValues_E = "|1|HE-Amount 1a|2|HE-Amount+PRnHE 1b|3|HE-Amount+PRvHEoGD+PRnHE 1c|4|HE-Amount+PRvHEmGD+PRnHE 1d|5|HE-Time 2a|6|HE-Time+PRnHE 2b|7|HE-Time+PRvHEoGD+PRnHE 2c|8|HE-Grind-IN(1<n<5) 3a|9|HE-Trend(6<n<50) 3b|10|HE-Trend(6<n<50)+NA 3c|11|PRvHEoGD 4a|12|PRvHEmGD 4b|13|PRvHEoGD+mGD 4c|14|PRnHE1HD 4d|16|HE-Iterativ 5|17|HE-Inputvaluecorrection 6|28|Parameterfinding Mode 6"
+        SelectValues_P = "|1|Quant. HE 1a|2|Quant. HE+Td/HE 1b|3|Quant. HE+Ta/HE/sCP+TdHE 1c|4|Quant. HE+Ta/HE/cCP+Td/HE 1d|5|Tempo HE 2a|6|Tempo HE+Td/HE 2b|7|Tempo HE+Ta/HE/sCP+Td/HE 2c|8|Retificação HE (1<n<5) 3a|9|Tendência HE(6<n<50) 3b|10|Tendência HE(6<n<50)+NA 3c|11|Ta/HE/sCP 4a|12|Ta/HE/cCP 4b|13|Ta/HE/sCP+cCP 4c|14|Td/HE1HD 4d|16|Interativo HE 5|17|Corr. Valor entrada HE 6|18|HE-Quant./Tempo/hiç 7|29|Parâmetro Modo 6"
+        SelectValues_T = "|1|HE-Miktari 1a|2|HE-Miktari+PRnHE 1b|3|HE-Miktari+PRvHEoGD+PRnHE 1c|4|HE-Miktari+PRvHEmGD+PRnHE 1d|5|HE-Süresi 2a|6|HE-Süresi+PRnHE 2b|7|HE-Süresi+PRvHEoGD+PRnHE 2c|8|HE-Rodaj(1<n<5) 3a|9|HE-Trend(6<n<50) 3b|10|HE-Trend(6<n<50)+NA 3c|11|PRvHEoGD 4a|12|PRvHEmGD 4b|13|PRvHEoGD+mGD 4c|14|PRnHE1HD 4d|16|HE-Iteratif 5|17|HE-Giris deg. düz. 6|18|HE-Trend/Zeit/kein 7|29|Parametre Mod 6"
+        ValueWidth = REG_DWORD 0x118
+    XNacharbeit
+      VarType = REG_DWORD 0x3
+      Data = "4"
+      ValueRange = "[0;10]"
+      Properties
+        Label_D = "Anzahl Nacharbeitsschleifen (Modus 3c, 6)"
+        Label_E = "Number of reworking-cycles (Modus 3c, 6)"
+        Label_P = "Quant. retificações de Retrabalho (Modo 3c, 6)"
+        Label_T = "Yeniden perdahlama adeti (Mod 3c,6)"
+    XSPCStop
+      VarType = REG_DWORD 0x3
+      Data = "0"
+      ValueRange = "[0;50]"
+      Properties
+        Label_D = "max. Anzahl Teile bis SPC-Teile quittiert werden müssen"
+        Label_E = "Max. Number of parts till SPC-parts have to be quitted"
+        Label_P = "Quant. máx. peças até que as peças SPC tenham de ser confirm."
+        Label_T = "Sifirlanmasi gereken azami SPC-parçalarindan parça adetine kadar"
+    XSPCAuto
+      VarType = REG_DWORD 0x3
+      Data = "0"
+      Properties
+        Label_D = "Automatische Entnahme SPC-Teile je Rahmen"
+        Label_E = "Number of automatic cycles for taking SPC-parts"
+        Label_P = "Contadaor de Pecas SPC"
+        Label_T = "Automatische Entnahme SPC-Teile je Rahmen"
+        SelectValues = "|0|Keine|1|5 Teile|2|2 x 5 Teile"
+        ValueWidth = REG_DWORD 0x96
+    SPCHeDataChg
+      VarType = REG_DWORD 0x3
+      Data = "0"
+      Properties
+        Label_D = "3 SPC-Teile entnehmen nach Änderung relevanter HE-Parameter?"
+        Label_E = "Get 3 SPC-Parts after changing relevant HE-Parameters?"
+        Label_P = "Get 3 SPC-Parts when relevant HE-Parameters are changed?"
+        Label_T = "He parametrisi degisikligi icin 3 SPC-parcasi?"
+        SelectValues_D = "|0|Nein|1|Ja"
+        SelectValues_E = "|0|No  |1|Yes"
+        SelectValues_P = "|0|Não |1|Sim"
+        SelectValues_T = "|0|Hayir|1|Evet"
+    DMCActive
+      VarType = REG_DWORD 0x3
+      Data = "0"
+      Properties
+        Label_D = "DMC-Lesestation aktiv"
+        Label_E = "DMC-Station active"
+        Label_P = ""
+        Label_T = "DMC-okuma istasyonu aktif"
+        SelectValues_D = "|0|NEIN|1|JA"
+        SelectValues_E = "|0|No  |1|Yes"
+        SelectValues_P = "|0|NÃO|1|SIM"
+        SelectValues_T = "|0|Hayir|1|Evet"
+        ValueWidth = REG_DWORD 0x46
+  PRvHE #Index
+    StructName = "TypeDataPRvHEStruct"
+    Properties
+      Label_D = "PRvHE"
+      Label_E = "Checking before HE"
+      Label_P = "Ta/HE"
+      Label_T = "PRvHE"
+    QSollUgoGD
+      VarType = REG_DWORD 0x4
+      Data = "675.000000"
+      ValueRange = "[0;5000]"
+      Properties
+        Label_D = "Untergrenze Solldurchfluß bei PRoGD"
+        Label_E = "Lowlimit targetflow at 100/0 bar"
+        Label_P = "Limite inferior do fluxo nominal em T/sCP"
+        Label_T = "PRoGD'de itibari akis alt siniri"
+        Label2_D = "[cm³/Zeiteinheit]"
+        Label2_E = "[cm³/Timeunit]"
+        Label2_P = "[cm³/unidade de tempo]"
+        Label2_T = "[cm³/Zaman birimi]"
+        FloatFormat = "%4.1f"
+    QSollOgoGD
+      VarType = REG_DWORD 0x4
+      Data = "731.000000"
+      ValueRange = "[0;5000]"
+      Properties
+        Label_D = "Obergrenze Solldurchfluß bei PRoGD"
+        Label_E = "Highlimit targetflow at 100/0 bar"
+        Label_P = "Limite superior do fluxo nominal em T/sCP"
+        Label_T = "PRoGD'de itibari akis üst siniri"
+        Label2_D = "[cm³/Zeiteinheit]"
+        Label2_E = "[cm³/Timeunit]"
+        Label2_P = "[cm³/unidade de tempo]"
+        Label2_T = "[cm³/Zaman birimi]"
+        FloatFormat = "%4.1f"
+    QSollUgmGD
+      VarType = REG_DWORD 0x4
+      Data = "100.000000"
+      ValueRange = "[0;5000]"
+      Properties
+        Label_D = "Untergrenze Solldurchfluß bei PRmGD"
+        Label_E = "Lowlimit targetflow at 100/60 bar"
+        Label_P = "Limite inferior do fluxo nominal em T/cCP"
+        Label_T = "PRmGD'de itibari akis alt siniri"
+        Label2_D = "[cm³/Zeiteinheit]"
+        Label2_E = "[cm³/Timeunit]"
+        Label2_P = "[cm³/unidade de tempo]"
+        Label2_T = "[cm³/Zaman birimi]"
+        FloatFormat = "%4.1f"
+    QSollOgmGD
+      VarType = REG_DWORD 0x4
+      Data = "2000.000000"
+      ValueRange = "[0;5000]"
+      Properties
+        Label_D = "Obergrenze Solldurchfluß bei PRmGD"
+        Label_E = "Highlimit targetflow at 100/60 bar"
+        Label_P = "Limite superior do fluxo nominal em T/cCP"
+        Label_T = "PRmGD'de itibari akis üst siniri"
+        Label2_D = "[cm³/Zeiteinheit]"
+        Label2_E = "[cm³/Timeunit]"
+        Label2_P = "[cm³/unidade de tempo]"
+        Label2_T = "[cm³/Zaman birimi]"
+        FloatFormat = "%4.1f"
+    QRange
+      VarType = REG_DWORD 0x4
+      Data = "2.000000"
+      ValueRange = "[0.1;2]"
+      Properties
+        Label_D = "Durchflussrange während der Messung"
+        Label_E = "Allowed flow range during measurement"
+        Label_P = "Durchflussrange während der Messung"
+        Label_T = "Ölçüm Sirasinda Akiskanlik Miktari"
+        Label2 = "[%]"
+        FloatFormat = "%1.3f"
+    StroemForm
+      VarType = REG_DWORD 0x3
+      Data = "2"
+      Properties
+        Label_D = "Strömungsform ohne Gegendruck"
+        Label_E = "Type of flow at 100/0 bar
+        Label_T = "Sapma Formu Karsi Basincsiz"
+        SelectValues_D = "|1|kavitationsfrei|2|kavitierend|3|Übergangsbereich"
+        SelectValues_E = "|1|without cavitation|2|with cavitation|3|transition range"
+        SelectValues_T = "|1|Kavitasyon Devre Disi|2|Kavitasyon Devrede|3|Gecis"
+        ValueWidth = REG_DWORD 0x118
+    CFakoGD #Index
+      StructName = "TypeDataCFakStruct"
+      Properties
+        Label_D = "C Faktör oGD"
+        Label_E = "C factor 100/0 "
+        Label_T = "C Faktör oGD"
+      ctx
+        VarType = REG_DWORD 0x4
+        Data = "0.000000"
+        ValueRange = "[-5;5]"
+        Properties
+          Label_D = "ctx Typspezifischer Cfaktor"
+          Label_E = "ctx type specific C-factor"
+          Label_T = "ctx Tipe özgü C-Faktör"
+          Label2 = "[1/K]"
+          FloatFormat = "%1.2f"
+      cpx
+        VarType = REG_DWORD 0x4
+        Data = "0.000000"
+        ValueRange = "[-5;5]"
+        Properties
+          Label_D = "cpx Typspezifischer Cfaktor"
+          Label_E = "cpx type specific C-factor"
+          Label_T = "cpx Tipe özgü C-Faktör"
+          Label2 = "[1/bar]"
+          FloatFormat = "%1.2f"
+    CFakmGD #Index
+      StructName = "TypeDataCFakStruct"
+      Properties
+        Label_D = "C Faktör mGD"
+        Label_E = "C factor 100/60"
+        Label_T = "C Faktör mGD"
+      ctx
+        VarType = REG_DWORD 0x4
+        Data = "0.000000"
+        ValueRange = "[-5;5]"
+        Properties
+          Label_D = "ctx Typspezifischer Cfaktor"
+          Label_E = "ctx type specific C-factor"
+          Label_T = "ctx Tipe özgü C-Faktör"
+          Label2 = "[1/K]"
+          FloatFormat = "%1.2f"
+      cpx
+        VarType = REG_DWORD 0x4
+        Data = "0.000000"
+        ValueRange = "[-5;5]"
+        Properties
+          Label_D = "cpx Typspezifischer Cfaktor"
+          Label_E = "cpx type specific C-factor"
+          Label_T = "cpx Tipe özgü C-Faktör"
+          Label2 = "[1/bar]"
+          FloatFormat = "%1.2f"
+    ExpM
+      VarType = REG_DWORD 0x4
+      Data = "0.000000"
+      ValueRange = "[-3;+3]"
+      Properties
+        Label_D = "Exponent M (für S QmGD: Modus 6)"
+        Label_E = "Exponent M (for S QmGD: Mode 6)"
+        Label_P = "Expoente M (para S QmGD: Modo 6)"
+        Label_T = "Üstel M (S QmGD:Mod 6 için)"
+        FloatFormat = "%1.2f"
+    ExpN
+      VarType = REG_DWORD 0x4
+      Data = "0.000000"
+      ValueRange = "[-3;+3]"
+      Properties
+        Label_D = "Exponent N (für S QoGD: Modus 6)"
+        Label_E = "Exponent N (for S QoGD: Mode 6)"
+        Label_P = "Expoente N (para S QmGD: Modo 6)"
+        Label_T = "Üstel N (S QmGD:Mod 6 için)"
+        FloatFormat = "%1.2f"
+    Limit1
+      VarType = REG_DWORD 0x4
+      Data = "100.000000"
+      ValueRange = "[0.1;5000]"
+      Properties
+        Label_D = "Grenzwert 1 für Modus 7"
+        Label_E = "Limit 1 for Mode 7"
+        Label_P = "Grenzwert 1 für Modus 7"
+        Label_T = "Ölcüm Siniri 1 Modus 7 icin"
+        FloatFormat = "%1.2f"
+    Limit2
+      VarType = REG_DWORD 0x4
+      Data = "110.000000"
+      ValueRange = "[0.1;5000]"
+      Properties
+        Label_D = "Grenzwert 2 für Modus 7"
+        Label_E = "Limit 2 for Mode 7"
+        Label_P = "Grenzwert 2 für Modus 7"
+        Label_T = "Ölcüm Siniri 2  Modus 7 icin"
+        FloatFormat = "%1.2f"
+    PH
+      VarType = REG_DWORD 0x4
+      Data = "100.000000"
+      ValueRange = "[0;200]"
+      Properties
+        Label_D = "Zielwert Hochdruckprüfung"
+        Label_E = "Targetvalue highpressurecheck"
+        Label_P = "Valor do objetivo Teste da alta pressão"
+        Label_T = "Hedef deger Yüksek basinç kontrolü"
+        Label2 = "[bar]"
+        FloatFormat = "%3.1f"
+    PHRange
+      VarType = REG_DWORD 0x4
+      Data = "6.000000"
+      ValueRange = "[0.1;6]"
+      Properties
+        Label_D = "PH Range während der Messung"
+        Label_E = "Allowed high-pressure range during measurement"
+        Label_P = "PH Range während der Messung"
+        Label_T = "PH Sapmasi-Ölcüm Sirasinda"
+        Label2 = "[%]"
+        FloatFormat = "%1.3f"
+    PHBlaseHD
+      VarType = REG_DWORD 0x4
+      Data = "105.000000"
+      ValueRange = "[0;200]"
+      Properties
+        Label_D = "Zielwert Druckaufbau (Blasensp. PH) für Hochdruckprüfung"
+        Label_E = "Targetvalue pressure-buildup for highpressurecheck"
+        Label_P = "Valor de pressão (acumulador AP) para teste da alta pressão"
+        Label_T = "YB kontrolü için basinç olusturma (Aküsü YB) hedef degeri"
+        Label2 = "[bar]"
+        FloatFormat = "%3.1f"
+    PHBlaseHDDefault
+      VarType = REG_DWORD 0x4
+      Data = "101.000000"
+      ValueRange = "[0;200]"
+      Properties
+        Label_D = "Zielwert Druckaufbau (Blasensp. PH) für Ausgangsdruck HD-Prfg."
+        Label_E = "Targetvalue pressure-buildup for startpressure highpressurecheck"
+        Label_P = "Valor de pressão (acumulador AP) para pressão de saída Teste AP"
+        Label_T = "Çikis basinci YB kontrolü için basinç olusturma (Aküsü YB) hedef degeri"
+        Label2 = "[bar]"
+        FloatFormat = "%3.1f"
+    PHBlaseGD
+      VarType = REG_DWORD 0x4
+      Data = "104.000000"
+      ValueRange = "[0;200]"
+      Properties
+        Label_D = "Zielwert Druckaufbau (Blasensp. PH) für Gegendruckprüfung"
+        Label_E = "Targetvalue pressure-buildup PH for counterpressurecheck"
+        Label_P = "Valor de pressão (acumulador AP) para teste da contrapressão"
+        Label_T = "Karsi basinç kontrolü için basinç olusturma (Aküsü YB) hedef degeri"
+        Label2 = "[bar]"
+        FloatFormat = "%3.1f"
+    PHBlaseGDDefault
+      VarType = REG_DWORD 0x4
+      Data = "100.000000"
+      ValueRange = "[0;200]"
+      Properties
+        Label_D = "Zielwert Druckaufbau (Blasensp. PH) für Ausgangsdruck GD-Prfg."
+        Label_E = "Targetvalue pressure-buildup PH for startpressure CP-check"
+        Label_P = "Valor de pressão (acumulador AP) para pressão de saída Teste CP"
+        Label_T = "Çikis basinci KD kontrolü için basinç olusturma (Aküsü YB) hedef degeri"
+        Label2 = "[bar]"
+        FloatFormat = "%3.1f"
+    PN
+      VarType = REG_DWORD 0x4
+      Data = "60.000000"
+      ValueRange = "[0;200]"
+      Properties
+        Label_D = "Zielwert Gegendruckprüfung"
+        Label_E = "Targetvalue counterpressurecheck"
+        Label_P = "Valor do objetivo Teste da contrapressão"
+        Label_T = "Hedef deger karsi basinç kontrolü"
+        Label2 = "[bar]"
+        FloatFormat = "%3.1f"
+    PNRange
+      VarType = REG_DWORD 0x4
+      Data = "6.000000"
+      ValueRange = "[0.1;6]"
+      Properties
+        Label_D = "PN Range während der Messung"
+        Label_E = "PN Range during measurement"
+        Label_P = "PN Range während der Messung"
+        Label_T = "PN Sapmasi-Ölcüm Sirasinda"
+        Label2 = "[%]"
+        FloatFormat = "%1.3f"
+    PNBlase
+      VarType = REG_DWORD 0x4
+      Data = "60.000000"
+      ValueRange = "[0;200]"
+      Properties
+        Label_D = "Zielwert Druckaufbau (Blasensp. PN ) für Gegendruckprüfung"
+        Label_E = "Targetvalue pressure-buildup PN for counterpressurecheck"
+        Label_P = "Valor de pressão (acumulador CP) para teste da contrapressão"
+        Label_T = "KB kontrolü için basinç olusturma (Aküsü KB) hedef degeri"
+        Label2 = "[bar]"
+        FloatFormat = "%3.1f"
+    PNBlaseDefault
+      VarType = REG_DWORD 0x4
+      Data = "54.000000"
+      ValueRange = "[0;200]"
+      Properties
+        Label_D = "Zielwert Druckaufbau (Blasensp. PN ) für Ausgangsdruck"
+        Label_E = "Targetvalue pressure-buildup PN for startpressure CP-check"
+        Label_P = "Valor de pressão (acumulador CP) para pressão de saída"
+        Label_T = "Çikis basinci için basinç olusturma (Aküsü KB) hedef degeri"
+        Label2 = "[bar]"
+        FloatFormat = "%3.1f"
+    TSpuelAufn
+      VarType = REG_DWORD 0x4
+      Data = "1.000000"
+      ValueRange = "[0.1;9.9]"
+      Properties
+        Label_D = "Spülzeit Aufnahme bei Gegendruck-Messung"
+        Label_E = "Flushingtime collet at counterpressure-measurement"
+        Label_P = "Tempo de enxágüe na medição da contrapressão"
+        Label_T = "Ters basinç ölçümünde durulama zamani alimi"
+        Label2 = "[s]"
+        FloatFormat = "%1.1f"
+    TSpGl
+      VarType = REG_DWORD 0x4
+      Data = "0.000000"
+      ValueRange = "[0.1;9.9]"
+      Properties
+        Label_D = "Spülzeit für Gleichlaufmessung"
+        Label_E = "Flushingtime for synchronous-measurement"
+        Label_P = "Tempo de enxágüe para medição do sincronismo"
+        Label_T = "Senkron ölçme için durulama zaman?"
+        Label2 = "[s]"
+        FloatFormat = "%1.1f"
+    TSpuelHD
+      VarType = REG_DWORD 0x4
+      Data = "8.000000"
+      ValueRange = "[0.1;9.9]"
+      Properties
+        Label_D = "Spülzeit vor 1.Prüfung Hochdruck"
+        Label_E = "Flushingtime before checking 1st nozzle 100/0"
+        Label_P = "Tempo de enxágüe antes do 1º teste de alta pressão"
+        Label_T = "1. Yüksek basinç kontrolünden önce durulama zamani"
+        Label2 = "[s]"
+        FloatFormat = "%1.1f"
+    TSpuelGD
+      VarType = REG_DWORD 0x4
+      Data = "8.000000"
+      ValueRange = "[0.1;9.9]"
+      Properties
+        Label_D = "Spülzeit vor 1.Prüfung Gegendruck"
+        Label_E = "Flushingtime before checking 1st nozzle 100/60"
+        Label_P = "Tempo de enxágüe antes do 1º teste de contrapressão"
+        Label_T = "1. Karsi basinç kontrolünden önce durulama zamani"
+        Label2 = "[s]"
+        FloatFormat = "%1.1f"
+    TPab
+      VarType = REG_DWORD 0x4
+      Data = "1.000000"
+      ValueRange = "[1;9.9]"
+      Properties
+        Label_D = "Druckabbauzeit"
+        Label_E = "Pressure-release-time"
+        Label_P = "Tempo para formação da pressão"
+        Label_T = "Basinç indirgeme süresi"
+        Label2 = "[s]"
+        FloatFormat = "%1.1f"
+    TAbsaug
+      VarType = REG_DWORD 0x4
+      Data = "3.000000"
+      ValueRange = "[1;20]"
+      Properties
+        Label_D = "Absaugzeit"
+        Label_E = "Exhausttime"
+        Label_P = "Tempo de aspiração"
+        Label_T = "Emme süresi"
+        Label2 = "[s]"
+        FloatFormat = "%2.1f"
+    Nmess
+      VarType = REG_DWORD 0x3
+      Data = "8"
+      ValueRange = "[1;25]"
+      Properties
+        Label_D = "Anzahl der Messwerte"
+        Label_E = "Number of measurementvalues"
+        Label_P = "Quant. valores medidos"
+        Label_T = "Ölçüm degerleri sayisi"
+    Mwz
+      VarType = REG_DWORD 0x3
+      Data = "0"
+      ValueRange = "[0;99]"
+      Properties
+        Label_D = "Anzahl der Messwiederholungen"
+        Label_E = "Number of repeat-measurements"
+        Label_P = "Quant. repetições da medição"
+    ConstMeth #Index
+      StructName = "TypeDataConstMethStruct"
+      Properties
+        Label_D = "Druck-Konstant-Methode"
+        Label_E = "Constant pressure mode"
+        Label_P = "Druck-Konstant-Methode"
+        Label_T = "Druck-Konstant-Methode"
+      Aktiv
+        VarType = REG_DWORD 0x3
+        Data = "0"
+        Properties
+          Label_D = "Druckkonstantmeth. aktiv"
+          Label_E = "Constant pressure mode?"
+          Label_T = "Sabit basinç metodu aktif?"
+          Label2_D = "AUS / EIN"
+          Label2_E = "OFF / ON"
+          SelectValues_D = "|0|Aus|1|EIN"
+          SelectValues_E = "|0|Deactive|1|Active"
+          SelectValues_T = "|0|Hayir|1|Evet""
+      N_Mess
+        VarType = REG_DWORD 0x3
+        Data = "3"
+        ValueRange = "[0;25]"
+        Properties
+          Label_D = "Anzahl Messwerte"
+          Label_E = "Number of measurement values"
+          Label_T = "Ölcüm sayisi"
+          Label2 = "[1]"
+      PH_Soll
+        VarType = REG_DWORD 0x4
+        Data = "100.000000"
+        ValueRange = "[80;120]"
+        Properties
+          Label_D = "Sollwert Prüfdruck"
+          Label_E = "Target pressure"
+          Label_T = "Ölcme basinci"
+          Label2 = "[bar]"
+          FloatFormat = "%.2lf"
+      P_Fenster
+        VarType = REG_DWORD 0x4
+        Data = "2.000000"
+        ValueRange = "[0;2]"
+        Properties
+          Label_D = "erlaubtes Druckfenster"
+          Label_E = "Allowed pressure window"
+          Label_T = "Ölcüm araligi"
+          Label2 = "[%]"
+          FloatFormat = "%.2lf"
+      T_DueseByp
+        VarType = REG_DWORD 0x4
+        Data = "1.000000"
+        ValueRange = "[0;10]"
+        Properties
+          Label_D = "T_DueseByp"
+          Label_E = "Flushing time bypass"
+          Label_T = "Bypass bekleme zamani"
+          Label2 = "sec"
+          FloatFormat = "%.2lf"
+      T_Wartezeit
+        VarType = REG_DWORD 0x4
+        Data = "2.000000"
+        ValueRange = "[0;10]"
+        Properties
+          Label_D = "T_Wartezeit"
+          Label_E = "Pressure settling time"
+          Label_T = "Bekleme zamani"
+          Label2 = "sec"
+          FloatFormat = "%.2lf"
+      Regler_KP
+        VarType = REG_DWORD 0x4
+        Data = "2.500000"
+        ValueRange = "[0;500]"
+        Label2 = "[1]"
+        FloatFormat = "%.2lf"
+        Properties
+          Label_D = "Regler_KP"
+          Label_E = "Proportionality constant (P) KP"
+          Label_T = "Regler_KP"
+      Regler_TN
+        VarType = REG_DWORD 0x4
+        Data = "25.000000"
+        ValueRange = "[0;500]"
+        Properties
+          Label_D = "Regler_TN"
+          Label_E = "Reset Time (I) TN"
+          Label_T = "Regler_TN"
+          Label2 = "sec"
+          FloatFormat = "%.2lf"
+      Regler_TV
+        VarType = REG_DWORD 0x4
+        Data = "0.000000"
+        ValueRange = "[0;500]"
+        Properties
+          Label_D = "Regler_TV"
+          Label_E = "Derivative time (D) TV"
+          Label_T = "Regler_TV"
+          Label2 = "sec"
+          FloatFormat = "%.2lf"
+    GraphoGD #Index
+      StructName = "TypeDataGraphStructPH"
+      Properties
+        Label_D = "Grafik oGD"
+        Label_E = "Graph 100/0"
+        Label_P = "Imagem s/CP"
+      MinX
+        VarType = REG_DWORD 0x3
+        Data = "0"
+        ValueRange = "[0;5000]"
+        Properties
+          Label_D = "Min-Wert Q-Achse"
+          Label_E = "Min-value Q-axis"
+          Label_P = "Valor mín. Eixo Q"
+          Label_T = "Min-Deger Q-Ekseni"
+          Label2_D = "[cm³/Zeiteinheit]"
+          Label2_E = "[cm³/Timeunit]"
+          Label2_P = "[cm³/unidade de tempo]"
+          Label2_T = "[cm³/Zaman birimi]"
+      MaxX
+        VarType = REG_DWORD 0x3
+        Data = "1000"
+        ValueRange = "[0;5000]"
+        Properties
+          Label_D = "Max-Wert Q-Achse"
+          Label_E = "Max-value Q-axis"
+          Label_P = "Valor máx. Eixo Q"
+          Label_T = "Maks-Deger Q-Ekseni"
+          Label2_D = "[cm³/Zeiteinheit]"
+          Label2_E = "[cm³/Timeunit]"
+          Label2_P = "[cm³/unidade de tempo]"
+          Label2_T = "[cm³/Zaman birimi]"
+      MinY
+        VarType = REG_DWORD 0x3
+        Data = "97"
+        ValueRange = "[0;200]"
+        Properties
+          Label_D = "Min-Wert PH-Achse"
+          Label_E = "Min-value PH-axis"
+          Label_P = "Valor mín. Eixo AP"
+          Label_T = "Min-Deger PH-Ekseni"
+          Label2 = "[bar]"
+      MaxY
+        VarType = REG_DWORD 0x3
+        Data = "107"
+        ValueRange = "[0;200]"
+        Properties
+          Label_D = "Max-Wert PH-Achse"
+          Label_E = "Max-value PH-axis"
+          Label_P = "Valor máx. Eixo AP"
+          Label_T = "Maks-Deger PH-Ekseni"
+          Label2 = "[bar]"
+    GraphmGD #Index
+      StructName = "TypeDataGraphStructPHN"
+      Properties
+        Label_D = "Grafik mGD"
+        Label_E = "Graph 100/60"
+        Label_P = "Imagem c/CP"
+      MinX
+        VarType = REG_DWORD 0x3
+        Data = "0"
+        ValueRange = "[0;5000]"
+        Properties
+          Label_D = "Min-Wert Q-Achse"
+          Label_E = "Min-value Q-axis"
+          Label_P = "Valor mín. Eixo Q"
+          Label_T = "Min-Deger Q-Ekseni"
+          Label2_D = "[cm³/Zeiteinheit]"
+          Label2_E = "[cm³/Timeunit]"
+          Label2_P = "[cm³/unidade de tempo]"
+          Label2_T = "[cm³/Zaman birimi]"
+      MaxX
+        VarType = REG_DWORD 0x3
+        Data = "1000"
+        ValueRange = "[0;5000]"
+        Properties
+          Label_D = "Max-Wert Q-Achse"
+          Label_E = "Max-value Q-axis"
+          Label_P = "Valor máx. Eixo Q"
+          Label_T = "Maks-Deger Q-Ekseni"
+          Label2_D = "[cm³/Zeiteinheit]"
+          Label2_E = "[cm³/Timeunit]"
+          Label2_P = "[cm³/unidade de tempo]"
+          Label2_T = "[cm³/Zaman birimi]"
+      MinYH
+        VarType = REG_DWORD 0x3
+        Data = "95"
+        ValueRange = "[0;200]"
+        Properties
+          Label_D = "Min-Wert PH-Achse"
+          Label_E = "Min-value PH-axis"
+          Label_P = "Valor mín. Eixo AP"
+          Label_T = "Min-Deger PH-Ekseni"
+          Label2 = "[bar]"
+      MaxYH
+        VarType = REG_DWORD 0x3
+        Data = "105"
+        ValueRange = "[0;200]"
+        Properties
+          Label_D = "Max-value PH-axis"
+          Label_E = "Max-Wert PH-Achse"
+          Label_P = "Valor máx. Eixo AP"
+          Label_T = "Maks-Deger PH-Ekseni"
+          Label2 = "[bar]"
+      MinYN
+        VarType = REG_DWORD 0x3
+        Data = "55"
+        ValueRange = "[0;200]"
+        Properties
+          Label_D = "Min-value PN-axis"
+          Label_E = "Min-Wert PN-Achse"
+          Label_P = "Valor mín. Eixo CP"
+          Label_T = "Min-Deger PN-Ekseni"
+          Label2 = "[bar]"
+  HE #Index
+    StructName = "TypeDataHEStruct"
+    Security = REG_DWORD 0x101
+    Properties
+      Label_D = "HE"
+      Label_E = "HE"
+      Label_P = "HE"
+      Label_T = "HE"
+    PSc
+      VarType = REG_DWORD 0x4
+      Data = "100.000000"
+      ValueRange = "[0;200]"
+      Properties
+        Label_D = "Schleifdruck Sollwert"
+        Label_E = "Grindingpressure targetvalue"
+        Label_P = "Valor nominal da pressão de retificação"
+        Label_T = "Asindirma basinci itibari degeri"
+        Label2 = "[bar]"
+        FloatFormat = "%3.1f"
+    PScMin
+      VarType = REG_DWORD 0x4
+      Data = "95.000000"
+      ValueRange = "[0;200]"
+      Properties
+        Label_D = "Untergrenze Schleifdruck"
+        Label_E = "Lowlimit Grindingpressure"
+        Label_P = "Limite inferior da pressão de retificação"
+        Label_T = "Alt sinir asindirma basinci"
+        Label2 = "[bar]"
+        FloatFormat = "%2.1f"
+    PScMax
+      VarType = REG_DWORD 0x4
+      Data = "105.000000"
+      ValueRange = "[0;200]"
+      Properties
+        Label_D = "Obergrenze Schleifdruck"
+        Label_E = "Highlimit Grindingpressure"
+        Label_P = "Limite superior da pressão de retificação"
+        Label_T = "Üst sinir asindirma basinci"
+        Label2 = "[bar]"
+        FloatFormat = "%2.1f"
+    QIterativ
+      VarType = REG_DWORD 0x4
+      Data = "0.000000"
+      ValueRange = "[60;100]"
+      Properties
+        Label_D = "Iterativer Abschaltwert von Q_Abschaltwert (Modus 5)"
+        Label_E = "Iterativ Shut-down-value from Q_Shut-down-value (Mode 5)"
+        Label_P = "Valor de desconexão interativo do valor de desconexão Q (Modo 5)"
+        Label_T = "Q_kapama degerine ait iteratif kapama degeri (Mod 5)"
+        Label2 = "[%]"
+        FloatFormat = "%3.1f"
+    QAbschaltN
+      VarType = REG_DWORD 0x4
+      Data = "774.000000"
+      ValueRange = "[0;5000]"
+      Properties
+        Label_D = "Normierter Abschaltwert für Mengenschleifen (bei 100 bar)"
+        Label_E = "Normed Shut-down-value for quantity-grinding (at 100 bar)"
+        Label_P = "Valor de desconexão para retificação em quantidade (100 bar)"
+        Label_T = "Toplu asindirma için kapama degeri (100 bar)"
+        Label2_D = "[cm³/Zeiteinheit]"
+        Label2_E = "[cm³/Timeunit]"
+        Label2_P = "[cm³/unidade de tempo]"
+        Label2_T = "[cm³/Zaman birimi]"
+        FloatFormat = "%4.1f"
+    QEw
+      VarType = REG_DWORD 0x4
+      Data = "85.000000"
+      ValueRange = "[70;95]"
+      Properties
+        Label_D = "Einstandswert % vom Abschaltwert"
+        Label_E = "Starting Value % of shut-down-value"
+        Label_P = "Valor de entrada % do valor de desconexão"
+        Label_T = "Ilk degeri % kapama degerine ait"
+        Label2 = "[%]"
+        FloatFormat = "%2.1f"
+    Mode6Mode
+      VarType = REG_DWORD 0x3
+      Data = "0"
+      Properties
+        Label_D = "Korrekturfaktorberechnung für Modus 6"
+        Label_E = "Formula for Mode 6"
+        Label_T = "Düzelmetek Mod 6"
+        SelectValues_D = "|0|KONVENTIONELL|1|MIT TANH"
+        SelectValues_E = "|0|CONVENTION|1|WITH TANH"
+        SelectValues_P = "|0|KONVENTIONELL|1|MIT TANH"
+        SelectValues_T = "|0|konvansiyonel|1|ILE TANH"
+        ValueWidth = REG_DWORD 0xbe
+    SSoll
+      VarType = REG_DWORD 0x4
+      Data = "0.000000"
+      ValueRange = "[0;2000]"
+      Properties
+        Label_D = "Soll-Kunstzahl S_Soll (Modus 6)"
+        Label_E = "Target Correctionfaktor S_Soll (Mode 6)"
+        Label_P = "Número nominal artificial S_nominal (Modo 6)"
+        Label_T = "Itibari-suni rakam S_Soll (Mod 6)"
+        Label2_D = "[cm³/Zeiteinheit]"
+        Label2_E = "[cm³/Timeunit]"
+        Label2_P = "[cm³/unidade de tempo]"
+        Label2_T = "[cm³/Zaman birimi]"
+        FloatFormat = "%4.2f"
+    FS
+      VarType = REG_DWORD 0x4
+      Data = "0.000000"
+      ValueRange = "[-20;+20]"
+      Properties
+        Label_D = "Steigung Kunstzahl F_s (Modus 6)"
+        Label_E = "Incline Correctionfaktor F_s (Mode 6)"
+        Label_P = "Aumento do número artificial F_s (Modo 6)"
+        Label_T = "Yükselme suni rakam F_s (Mod 6)"
+        Label2 = "[1]"
+        FloatFormat = "%2.4f"
+    ParaMode6 #Index
+      StructName = "TypeDataMode6ParaStruct"
+      Properties
+        Label_D = "Mode6 Parameter"
+        Label_E = "Mode6 Parameter"
+        Label_P = "Mode6 Parameter"
+        Label_T = "Mode6 Parametresi"
+      A
+        VarType = REG_DWORD 0x4
+        Data = "0.000000"
+        Properties
+          Label_D = "Parameter A EWKORR-Berechnung mit tanh"
+          Label_E = "Parameter A for EWKORR calculation (tanh)"
+          Label_P = "Parameter A EWKORR-Berechnung mit tanh"
+          Label_T = "Parametre A EWKORR-tanh ile hesaplama"
+          FloatFormat = "%3.3f"
+      B
+        VarType = REG_DWORD 0x4
+        Data = "0.000000"
+        Properties
+          Label_D = "Parameter B EWKORR-Berechnung mit tanh"
+          Label_E = "Parameter B for EWKORR calculation (tanh)"
+          Label_P = "Parameter B EWKORR-Berechnung mit tanh"
+          Label_T = "Parametre B EWKORR-tanh ile hesaplama"
+          FloatFormat = "%3.3f"
+      C
+        VarType = REG_DWORD 0x4
+        Data = "0.000000"
+        Properties
+          Label_D = "Parameter C EWKORR-Berechnung mit tanh"
+          Label_E = "Parameter C for EWKORR calculation (tanh)"
+          Label_P = "Parameter C EWKORR-Berechnung mit tanh"
+          Label_T = "Parametre C EWKORR-tanh ile hesaplama"
+          FloatFormat = "%3.3f"
+      D
+        VarType = REG_DWORD 0x4
+        Data = "0.000000"
+        Properties
+          Label_D = "Parameter D EWKORR-Berechnung mit tanh"
+          Label_E = "Parameter D for EWKORR calculation (tanh)"
+          Label_P = "Parameter D EWKORR-Berechnung mit tanh"
+          Label_T = "Parametre D EWKORR-tanh ile hesaplama"
+          FloatFormat = "%3.3f"
+      E
+        VarType = REG_DWORD 0x4
+        Data = "0.000000"
+        Properties
+          Label_D = "Parameter E EWKORR-Berechnung mit tanh"
+          Label_E = "Parameter E for EWKORR calculation (tanh)"
+          Label_P = "Parameter E EWKORR-Berechnung mit tanh"
+          Label_T = "Parametre E EWKORR-tanh ile hesaplama"
+          FloatFormat = "%3.3f"
+      F
+        VarType = REG_DWORD 0x4
+        Data = "0.000000"
+        Properties
+          Label_D = "Parameter F EWKORR-Berechnung mit tanh"
+          Label_E = "Parameter F for EWKORR calculation (tanh)"
+          Label_P = "Parameter F EWKORR-Berechnung mit tanh"
+          Label_T = "Parametre F EWKORR-tanh ile hesaplama"
+          FloatFormat = "%3.3f"
+      G
+        VarType = REG_DWORD 0x4
+        Data = "0.000000"
+        Properties
+          Label_D = "Parameter G EWKORR-Berechnung mit tanh"
+          Label_E = "Parameter G for EWKORR calculation (tanh)"
+          Label_P = "Parameter G EWKORR-Berechnung mit tanh"
+          Label_T = "Parametre G EWKORR-tanh ile hesaplama"
+          FloatFormat = "%3.3f"
+      H
+        VarType = REG_DWORD 0x4
+        Data = "0.000000"
+        Properties
+          Label_D = "Parameter H EWKORR-Berechnung mit tanh"
+          Label_E = "Parameter H for EWKORR calculation (tanh)"
+          Label_P = "Parameter H EWKORR-Berechnung mit tanh"
+          Label_T = "Parametre H EWKORR-tanh ile hesaplama"
+          FloatFormat = "%3.3f"
+      I
+        VarType = REG_DWORD 0x4
+        Data = "0.000000"
+        Properties
+          Label_D = "Parameter I EWKORR-Berechnung mit tanh"
+          Label_E = "Parameter I for EWKORR calculation (tanh)"
+          Label_P = "Parameter I EWKORR-Berechnung mit tanh"
+          Label_T = "Parametre I EWKORR-tanh ile hesaplama"
+          FloatFormat = "%3.3f"
+      J
+        VarType = REG_DWORD 0x4
+        Data = "0.000000"
+        Properties
+          Label_D = "Parameter J EWKORR-Berechnung mit tanh"
+          Label_E = "Parameter J for EWKORR calculation (tanh)"
+          Label_P = "Parameter J EWKORR-Berechnung mit tanh"
+          Label_T = "Parametre J EWKORR-tanh ile hesaplama"
+          FloatFormat = "%3.3f"
+    FuEG
+      VarType = REG_DWORD 0x4
+      Data = "97.099998"
+      ValueRange = "[60;100]"
+      Properties
+        Label_D = "Untere Grenze für Reset Trendkorrektur (Modus 3b,c)"
+        Label_E = "Low limit for RESET trendcorrection (Mode 3b,c)"
+        Label_P = "Limite inferior para reposição da correção da tendência (Modo 3b, c)"
+        Label_T = "Reset trend düzeltmesi için alt sinir (Mod 3b,c)"
+        Label2 = "[%]"
+        FloatFormat = "%3.2f"
+    FoEG
+      VarType = REG_DWORD 0x4
+      Data = "102.900002"
+      ValueRange = "[100;140]"
+      Properties
+        Label_D = "Obere Grenze für Reset Trendkorrektur (Modus 3b,c)"
+        Label_E = "Highlimit for RESET trendcorrection (Mode 3b,c)"
+        Label_P = "Limite superior para reposição da correção da tendência (Modo 3b, c)"
+        Label_T = "Reset trend düzeltmesi için üst sinir (Mod 3b,c)"
+        Label2 = "[%]"
+        FloatFormat = "%3.2f"
+    nTrend
+      VarType = REG_DWORD 0x3
+      Data = "6"
+      ValueRange = "[6;50]"
+      Properties
+        Label_D = "Anzahl der Teile bei Trendkorrektur (gl. Mittelwert: Modus 3b,c)"
+        Label_E = "Number of parts for trendcorrection (moving average: Mode 3b,c)"
+        Label_P = "Número de peças na correção da tendência (igual ao valor médio: Modo 3b, c)"
+        Label_T = "Trend düzeltmesi esnasinda parça sayisi (esit orta deger: Mod 3b,c)"
+    eFTrend
+      VarType = REG_DWORD 0x4
+      Data = "100.000000"
+      ValueRange = "[0;200]"
+      Properties
+        Label_D = "Eingriffsfaktor für Trendkorrektur alte Formel (Modus 3b,c)"
+        Label_E = "Interventionfactor for trendcorrection (Mode 3b,c)"
+        Label_P = "Fator de correção da tendência (Modo 3b, c)"
+        Label_T = "Trend düzeltmesi için müdahale faktörü alte Formel"
+        Label2 = "[%]"
+        FloatFormat = "%3.1f"
+    eFStart
+      VarType = REG_DWORD 0x4
+      Data = "0.000000"
+      ValueRange = "[0;200]"
+      Properties
+        Label_D = "Startwert Eingriffsfaktor für Trendkorr. nach neuer Formel"
+        Label_E = "Startwert Eingriffsfaktor für Trendkorr. nach neuer Formel"
+        Label_P = "Startwert Eingriffsfaktor für Trendkorr. nach neuer Formel"
+        Label_T = "Startwert Eingriffsfaktor für Trendkorr. nach neuer Formel"
+        Label2 = "[%]"
+        FloatFormat = "%3.1f"
+    eFEnd
+      VarType = REG_DWORD 0x4
+      Data = "0.000000"
+      ValueRange = "[0;200]"
+      Properties
+        Label_D = "Endwert Eingriffsfaktor für Trendkorr. nach neuer Formel"
+        Label_E = "Endwert Eingriffsfaktor für Trendkorr. nach neuer Formel"
+        Label_P = "Endwert Eingriffsfaktor für Trendkorr. nach neuer Formel"
+        Label_T = "Endwert Eingriffsfaktor für Trendkorr. nach neuer Formel"
+        Label2 = "[%]"
+        FloatFormat = "%3.1f"
+    eFGrenze
+      VarType = REG_DWORD 0x3
+      Data = "0"
+      ValueRange = "[1;50]"
+      Properties
+        Label_D = "Anzahl der Düsen nach denen von eFStart auf eFEnd umgeschaltet wird"
+        Label_E = "Anzahl der Düsen nach denen von eFStart auf eFEnd umgeschaltet wird"
+        Label_P = "Anzahl der Düsen nach denen von eFStart auf eFEnd umgeschaltet wird"
+        Label_T = "Anzahl der Düsen nach denen von eFStart auf eFEnd umgeschaltet wird"
+    mEinschl
+      VarType = REG_DWORD 0x3
+      Data = "3"
+      ValueRange = "[0;3]"
+      Properties
+        Label_D = "Anzahl der Teile bei automatischem Einschleifbetrieb (Modus 3a)"
+        Label_E = "Number of parts for automatic grind-in-mode (Mode 3a)"
+        Label_P = "Número de peças no modo de retificação automática (Modo 3a)"
+        Label_T = "Otomatik perdahlama isletiminde parça sayisi (Mod 3a)"
+    DeltaQ
+      VarType = REG_DWORD 0x4
+      Data = "0.000000"
+      ValueRange = "[0;999]"
+      Properties
+        Label_D = "Durchflusszunahme für Nachschleifzeit (Modus 3c/5/6)"
+        Label_E = "Flowincreasing for regrindingtime (Mode 3c/5/6)"
+        Label_P = "Aumento do fluxo para tempo de retificação final (Modo 3c/5/6)"
+        Label_T = "Yeniden asindirma süresi için akis artisi (Mod 3c/5/6)"
+        Label2 = "[cm³/s]"
+        FloatFormat = "%3.1f"
+    WSpSoll
+      VarType = REG_DWORD 0x4
+      Data = "30.000000"
+      ValueRange = "[20;50]"
+      Properties
+        Label_D = "Temperatur Spannstelle soll"
+        Label_E = "Targettemperature clampingposition"
+        Label_P = "Temperatura nominal do ponto de tensão"
+        Label_T = "Gerilim noktasi itibari sicakligi"
+        Label2 = "[°C]"
+        FloatFormat = "%2.1f"
+    WSpMax
+      VarType = REG_DWORD 0x4
+      Data = "32.000000"
+      ValueRange = "[20;50]"
+      Properties
+        Label_D = "Temperatur Spannstelle max."
+        Label_E = "Max. temperature clampingposition"
+        Label_P = "Temperatura máxima do ponto de tensão"
+        Label_T = "Sicaklik gerilim noktasi maks."
+        Label2 = "[°C]"
+        FloatFormat = "%2.1f"
+    WSpMin
+      VarType = REG_DWORD 0x4
+      Data = "27.000000"
+      ValueRange = "[20;50]"
+      Properties
+        Label_D = "Temperatur Spannstelle min."
+        Label_E = "Min. temperature clampingposition"
+        Label_P = "Temperatura mínima do ponto de tensão"
+        Label_T = "Sicaklik gerilim noktasi min."
+        Label2 = "[°C]"
+        FloatFormat = "%2.1f"
+    WOffsetTank
+      VarType = REG_DWORD 0x4
+      Data = "1.003997"
+      ValueRange = "[-5;5]"
+      Properties
+        Label_D = "Tank-Offset zur Spannstellentemperatur"
+        Label_E = "Tank-offset to clampingpositiontemperature"
+        Label_P = "Offset Depósito p/temperatura d/ponto de fixação"
+        Label_T = "Tank-Ofset gerilim noktasi sicakligi"
+        Label2 = "[°C]"
+        FloatFormat = "%2.1f"
+    nTHAutoReg
+      VarType = REG_DWORD 0x3
+      Data = "20"
+      ValueRange = "[0;100]"
+      Properties
+        Label_D = "Anzahl Messzyklen für autom. Temperatur-Anpassung der HE-Station (0=Aus)"
+        Label_E = "No. of meas.-cycles for automatic temperatureadjustment HE-Station (0=off)"
+        Label_P = "Número Ciclos d/medição p/adaptação autom. d/temperat.d/Estaçõe HE (0=deslig)"
+        Label_T = "Otomatik HE-Istasyonu Sicaklik-Kompensasyonu icin Ölcümerini sayisi (0=kapali)"
+    MQKorrFU1
+      VarType = REG_DWORD 0x4
+      Data = "1.189000"
+      ValueRange = "[1;2]"
+      Properties
+        Label_D = "Korrekturfaktor Masse/Durchfluss FU1"
+        Label_E = "Correctionfactor mass-/flow FU1"
+        Label_P = "Fator de correção Massa/Fluxo FU1"
+        Label_T = "Düzeltme faktörü Kütle/akis FU1"
+        Label2 = "[cm³/g]"
+        FloatFormat = "%2.3f"
+    MQKorrFU2
+      VarType = REG_DWORD 0x4
+      Data = "1.190000"
+      ValueRange = "[1;2]"
+      Properties
+        Label_D = "Korrekturfaktor Masse/Durchfluss FU2"
+        Label_E = "Correctionfactor mass-/flow FU2"
+        Label_P = "Fator de correção Massa/Fluxo FU2"
+        Label_T = "Düzeltme faktörü Kütle/akis FU2"
+        Label2 = "[cm³/g]"
+        FloatFormat = "%2.3f"
+    Wkompens
+      VarType = REG_DWORD 0x4
+      Data = "0.000000"
+      ValueRange = "[0;50]"
+      Properties
+        Label_D = "Faktor Temp.- kompensation"
+        Label_E = "Factor temp.- compensation"
+        Label_P = "Fator de compensação da temperatura"
+        Label_T = "Faktör sicaklik-kompenzasyon"
+        Label2_D = "[cm³/Zeiteinheit]"
+        Label2_E = "[cm³/Timeunit]"
+        Label2_P = "[cm³/unidade de tempo]"
+        Label2_T = "[cm³/Zaman birimi]"
+        FloatFormat = "%2.1f"
+    TAbsaug
+      VarType = REG_DWORD 0x4
+      Data = "3.000000"
+      ValueRange = "[0;20]"
+      Properties
+        Label_D = "Absaugzeit"
+        Label_E = "Exhausttime"
+        Label_P = "Tempo de aspiração"
+        Label_T = "Emme süresi"
+        Label2 = "[s]"
+        FloatFormat = "%2.1f"
+    TZeitSc
+      VarType = REG_DWORD 0x4
+      Data = "25.000000"
+      ValueRange = "[4;150]"
+      Properties
+        Label_D = "Zeitvorgabe Zeitschleifen"
+        Label_E = "Timedefault timegrinding"
+        Label_P = "Indicação de tempo Loop de tempo"
+        Label_T = "Zaman ayarli asindirma için zaman bildirimi"
+        Label2 = "[s]"
+        FloatFormat = "%3.1f"
+    TMaxMengeSc
+      VarType = REG_DWORD 0x4
+      Data = "50.000000"
+      ValueRange = "[4;150]"
+      Properties
+        Label_D = "Max. Zeit Schleifen mengengesteuert"
+        Label_E = "Max. time for quantity-grinding"
+        Label_P = "Tempo de retificação máx. regulado em função da quantidade"
+        Label_T = "Miktara bagli azami zaman ayarli asindirma"
+        Label2 = "[s]"
+        FloatFormat = "%3.1f"
+    TEinschwing
+      VarType = REG_DWORD 0x4
+      Data = "4.000000"
+      ValueRange = "[0;10]"
+      Properties
+        Label_D = "Einschwingzeit"
+        Label_E = "Transient-oscillation time"
+        Label_P = "Tempo de rotação"
+        Label_T = "Giris zamani"
+        Label2 = "[s]"
+        FloatFormat = "%2.1f"
+    MesszyklKontr
+      VarType = REG_DWORD 0x3
+      Data = "20"
+      ValueRange = "[0;100]"
+      Properties
+        Label_D = "Anzahl Meßzyklen Fehlerkontrolle"
+        Label_E = "Number of measurementcycles errorcontrol"
+        Label_P = "Quant. de ciclos de medição Controle de erros"
+        Label_T = "Hata kontrolü ölçüm periyodu sayisi"
+    VentilVerstopft
+      VarType = REG_DWORD 0x4
+      Data = "0.800000"
+      ValueRange = "[0.5;1]"
+      Properties
+        Label_D = "Kontrolle Düse verstopft (Verh.)"
+        Label_E = "Controlling nozzle plugged (prop.)"
+        Label_P = "Controle Bocal entupido (relação)"
+        Label_T = "Kontrol memesi tikali (Verh.)"
+        Label2 = "[1]"
+        FloatFormat = "%1.2f"
+    VentilUndicht
+      VarType = REG_DWORD 0x4
+      Data = "1.300000"
+      ValueRange = "[1;2]"
+      Properties
+        Label_D = "Kontrolle Düse undicht (Verh.)"
+        Label_E = "Controlling nozzle leak (prop.)"
+        Label_P = "Controle Bocal não estanque (relação)"
+        Label_T = "Kontrol memesi sizdiriyor (Verh.)"
+        Label2 = "[1]"
+        FloatFormat = "%1.2f"
+    Graph #Index
+      StructName = "TypeDataGraphStructHE"
+      Properties
+        Label_D = "Graph"
+        Label_E = "Graph"
+        Label_P = "Imagem"
+        Label_T = "Grafik"
+      MinQ
+        VarType = REG_DWORD 0x3
+        Data = "450"
+        ValueRange = "[0;5000]"
+        Properties
+          Label_D = "Min-Wert Q-Achse"
+          Label_E = "Min-value Q-axis"
+          Label_P = "Valor mín. Eixo Q"
+          Label_T = "Min-Deger Q-Ekseni"
+          Label2_D = "[cm³/Zeiteinheit]"
+          Label2_E = "[cm³/Timeunit]"
+          Label2_P = "[cm³/unidade de tempo]"
+          Label2_T = "[cm³/Zaman birimi]"
+      MaxQ
+        VarType = REG_DWORD 0x3
+        Data = "600"
+        ValueRange = "[0;5000]"
+        Properties
+          Label_D = "Max-Wert Q-Achse"
+          Label_E = "Max-value Q-axis"
+          Label_P = "Valor máx. Eixo Q"
+          Label_T = "Maks-Deger Q-Ekseni"
+          Label2_D = "[cm³/Zeiteinheit]"
+          Label2_E = "[cm³/Timeunit]"
+          Label2_P = "[cm³/unidade de tempo]"
+          Label2_T = "[cm³/Zaman birimi]"
+      MinP
+        VarType = REG_DWORD 0x3
+        Data = "95"
+        ValueRange = "[0;200]"
+        Properties
+          Label_D = "Min-Wert P-Achse"
+          Label_E = "Min-value P-axis"
+          Label_P = "Valor mín. Eixo P"
+          Label_T = "Min-Deger P-Ekseni"
+          Label2 = "[bar]"
+      MaxP
+        VarType = REG_DWORD 0x3
+        Data = "105"
+        ValueRange = "[0;200]"
+        Properties
+          Label_D = "Max-Wert P-Achse"
+          Label_E = "Max-value P-axis"
+          Label_P = "Valor máx. Eixo P"
+          Label_T = "Maks-Deger P-Ekseni"
+          Label2 = "[bar]"
+      MinT
+        VarType = REG_DWORD 0x3
+        Data = "0"
+        ValueRange = "[0;100]"
+        Properties
+          Label_D = "Min-Wert t-Achse"
+          Label_E = "Min-value t-axis"
+          Label_P = "Valor mín. Eixo t"
+          Label_T = "Min-Deger t-Ekseni"
+          Label2 = "[s]"
+      MaxT
+        VarType = REG_DWORD 0x3
+        Data = "20"
+        ValueRange = "[0;100]"
+        Properties
+          Label_D = "Max-Wert t-Achse"
+          Label_E = "Max-value t-axis"
+          Label_P = "Valor máx. Eixo t"
+          Label_T = "Maks-Deger t-Ekseni"
+          Label2 = "[s]"
+  SP #Index
+    StructName = "TypeDataSPStruct"
+    Properties
+      Label_D = "SP"
+      Label_E = "Flushing"
+      Label_P = "Lavar"
+      Label_T = "Yikama"
+    TSpuelen
+      VarType = REG_DWORD 0x4
+      Data = "12.000000"
+      ValueRange = "[1;20]"
+      Properties
+        Label_D = "Mindest-Spülzeit Spülstation"
+        Label_E = "Min. flushingtime flushing-station"
+        Label_P = "Tempo de enxágüe mínimo Estação de enxágüe"
+        Label_T = "Yikama istasyonu asgari durulama süresi"
+        Label2 = "[s]"
+        FloatFormat = "%2.1f"
+    TAusblasen
+      VarType = REG_DWORD 0x4
+      Data = "5.000000"
+      ValueRange = "[1;20]"
+      Properties
+        Label_D = "Ausblaszeit Spülstation"
+        Label_E = "Blow-out-time flushing-station"
+        Label_P = "Tempo de sopragem Estação de enxágüe"
+        Label_T = "Yikama istasyonu üfleme süresi"
+        Label2 = "[s]"
+        FloatFormat = "%2.1f"
+  PRnHE #Index
+    StructName = "TypeDataPRnHEStruct"
+    Properties
+      Label_D = "PRnHE"
+      Label_E = "Checking after HE"
+      Label_P = "Td/HE"
+      Label_T = "PRnHE"
+    QSollUg
+      VarType = REG_DWORD 0x4
+      Data = "759.000000"
+      ValueRange = "[0;5000]"
+      Properties
+        Label_D = "Untergrenze Solldurchfluß bei PRnHE"
+        Label_E = "Lowlimit targetflow at 100 bar"
+        Label_P = "Limite inferior do fluxo nominal em PH1"
+        Label_T = "PRoGD'de itibari akis alt siniri"
+        Label2_D = "[cm³/Zeiteinheit]"
+        Label2_E = "[cm³/Timeunit]"
+        Label2_P = "[cm³/unidade de tempo]"
+        Label2_T = "[cm³/Zaman birimi]"
+        FloatFormat = "%4.1f"
+    QSollOg
+      VarType = REG_DWORD 0x4
+      Data = "790.000000"
+      ValueRange = "[0;5000]"
+      Properties
+        Label_D = "Obergrenze Solldurchfluß bei PRnHE"
+        Label_E = "Highlimit targetflow at 100 bar"
+        Label_P = "Limite superior do fluxo nominal em PH1"
+        Label_T = "PRoGD'de itibari akis üst siniri"
+        Label2_D = "[cm³/Zeiteinheit]"
+        Label2_E = "[cm³/Timeunit]"
+        Label2_P = "[cm³/unidade de tempo]"
+        Label2_T = "[cm³/Zaman birimi]"
+        FloatFormat = "%4.1f"
+    QRange
+      VarType = REG_DWORD 0x4
+      Data = "1.000000"
+      ValueRange = "[0.1;2]"
+      Properties
+        Label_D = "Durchflussrange während der Messung"
+        Label_E = "Allowed flow range during measurement"
+        Label_P = "Durchflussrange während der Messung"
+        Label_T = "Ölçüm Sirasinda Akiskanlik Miktari"
+        Label2 = "[%]"
+        FloatFormat = "%1.3f"
+    StroemForm
+      VarType = REG_DWORD 0x3
+      Data = "2"
+      Properties
+        Label_D = "Strömungsform ohne Gegendruck"
+        Label_E = "Type of flow at 100/0 bar"
+        Label_T = "Sapma Formu Karsi Basincsiz"
+        SelectValues_D = "|1|kavitationsfrei|2|kavitierend|3|Übergangsbereich"
+        SelectValues_E = "|1|without cavitation|2|with cavitation|3|transition range"
+        SelectValues_T = "|1|Kavitasyon Devre Disi|2|Kavitasyon Devrede|3|Gecis"
+        ValueWidth = REG_DWORD 0x118
+    CFak #Index
+      StructName = "TypeDataCFakStruct"
+      Properties
+        Label_D = "C Faktör oGD"
+        Label_E = "C factor"
+        Label_T = "C Faktör oGD"
+      ctx
+        VarType = REG_DWORD 0x4
+        Data = "0.000000"
+        ValueRange = "[-5;5]"
+        Properties
+          Label_D = "ctx Typspezifischer Cfaktor"
+          Label_E = "ctx type specific C-factor"
+          Label_T = "ctx Tipe özgü C-Faktör"
+          Label2 = "[1/K]"
+          FloatFormat = "%1.2f"
+      cpx
+        VarType = REG_DWORD 0x4
+        Data = "0.000000"
+        ValueRange = "[-5;5]"
+        Properties
+          Label_D = "cpx Typspezifischer Cfaktor"
+          Label_E = "cpx type specific C-factor"
+          Label_T = "cpx Tipe özgü C-Faktör"
+          Label2 = "[1/bar]"
+          FloatFormat = "%1.2f"
+    UEgTrend
+      VarType = REG_DWORD 0x4
+      Data = "99.900002"
+      ValueRange = "[80;100]"
+      Properties
+        Label_D = "Untere Eingriffsgrenze Trendkorrektur (Modus 3b,c)"
+        Label_E = "Low-interventionlimit trendcorrection (Mode 3b,c)"
+        Label_P = "Limite inferior de acesso Correção da tendência (Modo 3b,c)"
+        Label_T = "Trend düzeltmesi alt müdahele siniri (Mod 3b,c)"
+        Label2 = "[%]"
+        FloatFormat = "%3.2f"
+    OEgTrend
+      VarType = REG_DWORD 0x4
+      Data = "100.099998"
+      ValueRange = "[100;120]"
+      Properties
+        Label_D = "Obere Eingriffsgrenze Trendkorrektur (Modus 3b,c)"
+        Label_E = "High-interventionlimit trendcorrection (Mode 3b,c)"
+        Label_P = "Limite superior de acesso Correção da tendência (Modo 3b,c)"
+        Label_T = "Trend düzeltmesi üst müdahele siniri (Mod 3b,c)"
+        Label2 = "[%]"
+        FloatFormat = "%3.2f"
+    QRekursionUG
+      VarType = REG_DWORD 0x4
+      Data = "400.000000"
+      ValueRange = "[0;5000]"
+      Properties
+        Label_D = "Untergrenze Rekursionsbetrieb (Modus 3c/6)"
+        Label_E = "Lowlimit recursionmode (Mode 3c/6)"
+        Label_P = "Limite inferior Modo de operação de Recursividade (Modo 3c/6)"
+        Label_T = "Alt sinir rekursiyon isletimi (Mod 3c/6)"
+        Label2_D = "[cm³/Zeiteinheit]"
+        Label2_E = "[cm³/Timeunit]"
+        Label2_P = "[cm³/unidade de tempo]"
+        Label2_T = "[cm³/Zaman birimi]"
+        FloatFormat = "%4.1f"
+    QRekursionOG
+      VarType = REG_DWORD 0x4
+      Data = "463.000000"
+      ValueRange = "[0;5000]"
+      Properties
+        Label_D = "Obergrenze Rekursionsbetrieb (Modus 3c/6)"
+        Label_E = "Highlimit recursionmode (Mode 3c/6)"
+        Label_P = "Limite superior Modo de operação de Recursividade (Modo 3c/6)"
+        Label_T = "Üst sinir rekursiyon isletimi (Mod 3c/6)"
+        Label2_D = "[cm³/Zeiteinheit]"
+        Label2_E = "[cm³/Timeunit]"
+        Label2_P = "[cm³/unidade de tempo]"
+        Label2_T = "[cm³/Zaman birimi]"
+        FloatFormat = "%4.1f"
+    NAvgRekursion
+      VarType = REG_DWORD 0x3
+      Data = "1"
+      ValueRange = "[0;20]"
+      Properties
+        Label_D = "Anzahl Werte für gl. Mittelwert QDelta Rekursionsbetrieb 0->aus"
+        Label_E = "No of values for average value QDelta recusion 0->off"
+        Label_P = "Anzahl Werte für gl. Mittelwert QDelta Rekursionsbetrieb 0->aus"
+        Label_T = "Ortadeger Adet degeri  QDelta rekursiyon isletimi 0->kapali"
+    PH1
+      VarType = REG_DWORD 0x4
+      Data = "100.000000"
+      ValueRange = "[0;200]"
+      Properties
+        Label_D = "Zielwert Hochdruckprüfung 1"
+        Label_E = "Targetvalue highpressurecheck 1"
+        Label_P = "Valor do objetivo Teste da alta pressão 1"
+        Label_T = "Hedef deger Yüksek basinç kontrolü"
+        Label2 = "[bar]"
+        FloatFormat = "%3.1f"
+    PH1Range
+      VarType = REG_DWORD 0x4
+      Data = "6.000000"
+      ValueRange = "[0.1;6]"
+      Properties
+        Label_D = "PH1 Range während der Messung"
+        Label_E = "Allowed pressure range during measurement"
+        Label_P = "PH1 Range während der Messung"
+        Label_T = "PH1 Sapmasi-Ölcüm Sirasinda"
+        Label2 = "[%]"
+        FloatFormat = "%1.3f"
+    PH1BlaseHD
+      VarType = REG_DWORD 0x4
+      Data = "102.000000"
+      ValueRange = "[0;200]"
+      Properties
+        Label_D = "Zielwert Druckaufbau (Blasensp. PH) für Hochdruckprüfung 1"
+        Label_E = "Targetvalue pressure-buildup for highpressurecheck 1"
+        Label_P = "Valor de pressão (acumulador AP) para teste da alta pressão 1"
+        Label_T = "YB kontrolü için basinç olusturma (Aküsü YB) hedef degeri"
+        Label2 = "[bar]"
+        FloatFormat = "%3.1f"
+    PH1BlaseHDDefault
+      VarType = REG_DWORD 0x4
+      Data = "101.000000"
+      ValueRange = "[0;200]"
+      Properties
+        Label_D = "Zielwert Druckaufbau (Blasensp. PH) Ausgangsdruck für HD-Prfg. 1"
+        Label_E = "Targetvalue pressure-buildup startpressure for highpressurecheck 1"
+        Label_P = "Valor de pressão (acumulador AP) para pressão de saída Teste AP"
+        Label_T = "Çikis basinci YB kontrolü için basinç olusturma (Aküsüs YB) hedef degeri"
+        Label2 = "[bar]"
+        FloatFormat = "%3.1f"
+    TSpuel
+      VarType = REG_DWORD 0x4
+      Data = "8.000000"
+      ValueRange = "[0.1;9.9]"
+      Properties
+        Label_D = "Spülzeit vor 1.Prüfung"
+        Label_E = "Flushingtime before checking 1st nozzle"
+        Label_P = "Tempo de enxágüe antes do 1º teste"
+        Label_T = "1. Yüksek basinç kontrolünden önce durulama zamani"
+        Label2 = "[s]"
+        FloatFormat = "%1.1f"
+    TPab
+      VarType = REG_DWORD 0x4
+      Data = "1.000000"
+      ValueRange = "[1;9.9]"
+      Properties
+        Label_D = "Druckabbauzeit"
+        Label_E = "Pressure-releasetime"
+        Label_P = "Tempo para formação da pressão"
+        Label_T = "Basinç indirgeme süresi"
+        Label2 = "[s]"
+        FloatFormat = "%1.1f"
+    TAbsaug
+      VarType = REG_DWORD 0x4
+      Data = "2.000000"
+      ValueRange = "[1;20]"
+      Properties
+        Label_D = "Absaugzeit"
+        Label_E = "Exhausttime"
+        Label_P = "Tempo de aspiração"
+        Label_T = "Emme süresi"
+        Label2 = "[s]"
+        FloatFormat = "%2.1f"
+    Nmess
+      VarType = REG_DWORD 0x3
+      Data = "7"
+      ValueRange = "[1;25]"
+      Properties
+        Label_D = "Anzahl der Messwerte"
+        Label_E = "Number of measurementvalues"
+        Label_P = "Quant. valores medidos"
+        Label_T = "Ölçüm degerleri sayisi"
+    Mwz
+      VarType = REG_DWORD 0x3
+      Data = "0"
+      ValueRange = "[0;99]"
+      Properties
+        Label_D = "Anzahl der Messwiederholungen"
+        Label_E = "Number of repeat measurements"
+        Label_P = "Quant. valores medidos"
+        Label_T = "Ölçüm tekrari sayisi"
+    ConstMeth #Index
+      StructName = "TypeDataConstMethStruct"
+      Properties
+        Label_D = "Druck-Konstant-Methode"
+        Label_E = "Constant pressure mode"
+        Label_P = "Druck-Konstant-Methode"
+        Label_T = "Druck-Konstant-Methode"
+      Aktiv
+        VarType = REG_DWORD 0x3
+        Data = "0"
+        Properties
+          Label_D = "Druckkonstantmeth. aktiv"
+          Label_E = "Constant pressure mode?"
+          Label_T = "Sabit basinç metodu aktif?"
+          Label2_D = "AUS / EIN"
+          SelectValues_D = "|0|Aus|1|EIN"
+          SelectValues_E = "|0|Deactive|1|Active"
+          SelectValues_T = "|0|Hayir|1|Evet""
+      N_Mess
+        VarType = REG_DWORD 0x3
+        Data = "2"
+        ValueRange = "[0;25]"
+        Properties
+          Label_D = "Anzahl Messwerte"
+          Label_E = "No of measurement values"
+          Label_T = "Ölcüm sayisi"
+          Label2 = "[1]"
+      PH_Soll
+        VarType = REG_DWORD 0x4
+        Data = "92.000000"
+        ValueRange = "[80;120]"
+        Properties
+          Label_D = "Sollwert Prüfdruck"
+          Label_E = "Target pressure"
+          Label_T = "Ölcme basinci"
+          Label2 = "[bar]"
+          FloatFormat = "%.2lf"
+      P_Fenster
+        VarType = REG_DWORD 0x4
+        Data = "2.000000"
+        ValueRange = "[0;2]"
+        Properties
+          Label_D = "erlaubtes Druckfenster"
+          Label_E = "Allowed pressure window"
+          Label_T = "Ölcüm araligi"
+          Label2 = "[%]"
+          FloatFormat = "%.2lf"
+      T_DueseByp
+        VarType = REG_DWORD 0x4
+        Data = "1.000000"
+        ValueRange = "[0;10]"
+        Properties
+          Label_D = "T_DueseByp"
+          Label_E = "Flushing time bypass"
+          Label_T = "Bypass bekleme zamani"
+          Label2 = "sec"
+          FloatFormat = "%.2lf"
+      T_Wartezeit
+        VarType = REG_DWORD 0x4
+        Data = "2.000000"
+        ValueRange = "[0;10]"
+        Properties
+          Label_D = "T_Wartezeit"
+          Label_E = "Pressure settling time"
+          Label_T = "Bekleme zamani"
+          Label2 = "sec"
+          FloatFormat = "%.2lf"
+      Regler_KP
+        VarType = REG_DWORD 0x4
+        Data = "2.500000"
+        ValueRange = "[0;500]"
+        Label2 = "[1]"
+        FloatFormat = "%.2lf"
+        Properties
+          Label_D = "Regler_KP"
+          Label_E = "Proportionality constant (P) KP"
+          Label_T = "Regler_KP"
+      Regler_TN
+        VarType = REG_DWORD 0x4
+        Data = "25.000000"
+        ValueRange = "[0;500]"
+        Properties
+          Label_D = "Regler_TN"
+          Label_E = "Reset Time (I) TN"
+          Label_T = "Regler_TN"
+          Label2 = "sec"
+          FloatFormat = "%.2lf"
+      Regler_TV
+        VarType = REG_DWORD 0x4
+        Data = "0.000000"
+        ValueRange = "[0;500]"
+        Properties
+          Label_D = "Regler_TV"
+          Label_E = "Derivative time (D) TV"
+          Label_T = "Regler_TV"
+          Label2 = "sec"
+          FloatFormat = "%.2lf"
+    Graph #Index
+      StructName = "TypeDataGraphStructPH"
+      Properties
+        Label_D = "Graph"
+        Label_E = "Graph"
+        Label_P = "Imagem"
+        Label_T = "Grafik"
+      MinX
+        VarType = REG_DWORD 0x3
+        Data = "100"
+        ValueRange = "[0;5000]"
+        Properties
+          Label_D = "Min-Wert Q-Achse"
+          Label_E = "Min-value Q-axis"
+          Label_P = "Valor mín. Eixo Q"
+          Label_T = "Min-Deger Q-Ekseni"
+          Label2_D = "[cm³/Zeiteinheit]"
+          Label2_E = "[cm³/Timeunit]"
+          Label2_P = "[cm³/unidade de tempo]"
+          Label2_T = "[cm³/Zaman birimi]"
+      MaxX
+        VarType = REG_DWORD 0x3
+        Data = "2000"
+        ValueRange = "[0;5000]"
+        Properties
+          Label_D = "Max-Wert Q-Achse"
+          Label_E = "Max-value Q-axis"
+          Label_P = "Valor máx. Eixo Q"
+          Label_T = "Maks-Deger Q-Ekseni"
+          Label2_D = "[cm³/Zeiteinheit]"
+          Label2_E = "[cm³/Timeunit]"
+          Label2_P = "[cm³/unidade de tempo]"
+          Label2_T = "[cm³/Zaman birimi]"
+      MinY
+        VarType = REG_DWORD 0x3
+        Data = "90"
+        ValueRange = "[0;200]"
+        Properties
+          Label_D = "Min-Wert PH-Achse"
+          Label_E = "Min-value PH-axis"
+          Label_P = "Valor mín. Eixo AP"
+          Label_T = "Min-Deger PH-Ekseni"
+          Label2 = "[bar]"
+      MaxY
+        VarType = REG_DWORD 0x3
+        Data = "100"
+        ValueRange = "[0;200]"
+        Properties
+          Label_D = "Max-Wert PH-Achse"
+          Label_E = "Max-value PH-axis"
+          Label_P = "Valor máx. Eixo AP"
+          Label_T = "Maks-Deger PH-Ekseni"
+          Label2 = "[bar]"

@@ -577,7 +577,50 @@ def split_dataset_according_to_time(file_path: list):
 			wfile.close()
 
 
+def insert_gaussian_noise(file_path: str):
+	assert os.path.exists(file_path)
+	poses = [4, 5]
 
+	with open(file_path, 'r') as reader:
+		# print(train_file_path)
+		content = [turn_list_of_str_into_float(x.strip().split(',')) for x in reader.readlines()]
+		content_dict_with_object = {}
+		for row in content:
+			n_dict = content_dict_with_object.get(row[0], {})
+			n_dict[row[1]] = row#[2:]
+			content_dict_with_object[row[0]] = n_dict
+
+
+	for _object_id,_object_item in content_dict_with_object.items():
+		sorted_frame_id_list = sorted(_object_item.keys())
+		for _frame_index,_frame_id in enumerate(sorted_frame_id_list):
+
+			_current_row = _object_item[_frame_id]
+			if _frame_index + 1 >= len(sorted_frame_id_list):
+				break
+			_next_frame_id = sorted_frame_id_list[_frame_index + 1]
+			_next_row = _object_item[_next_frame_id]
+
+			_temp_averaged_list = [ ( _current_row[_col_index] + _next_row[_col_index] )/2   for _col_index in range(len(_object_item[_frame_id]))]
+
+			for _count_pos in poses:
+				noise = np.random.normal(_temp_averaged_list[_count_pos], 1)
+				_temp_averaged_list[_count_pos] = noise
+
+			_object_item[(_frame_id + _next_frame_id)/2] = _temp_averaged_list
+
+	noised_file_name = file_path.split('.',-1)[0] + '_local_x_local_y.csv'
+	with open(noised_file_name,'w') as writer:
+		for _object_id, _object_item in content_dict_with_object.items():
+			sorted_frame_id_list = sorted(_object_item.keys())
+			for _frame_index, _frame_id in enumerate(sorted_frame_id_list):
+				writer.write(','.join([str(_count_col) for _count_col in _object_item[_frame_id]]) + '\n')
+
+def turn_list_of_str_into_float(target_list:list[str]):
+	for _list_item_index,_list_item in enumerate(target_list):
+		target_list[_list_item_index] = float(_list_item)
+
+	return target_list
 
 if __name__ == '__main__':
 	# train_file_path_list = sorted(glob.glob(os.path.join(data_root, 'prediction_train/*.csv')))
@@ -587,9 +630,11 @@ if __name__ == '__main__':
 
 	# down_sample(['./data/NGSIM/prediction_train/smoothed_trajectories-0515-0530_deli.csv'], 4, 1500)
 
-	print('Generating Training Data.')
-	generate_data(['./data/NGSIM/prediction_train/smoothed_trajectories-0400-0415_deli_downsampled_by_4_14-15mins_no_overlap.csv'], pra_is_train=True)
+	# print('Generating Training Data.')
+	# generate_data(['./data/NGSIM/prediction_train/smoothed_trajectories-0400-0415_deli_downsampled_by_4_14-15mins_no_overlap.csv'], pra_is_train=True)
 
 	# print('Generating Testing Data.')
 	# generate_data(test_file_path_list, pra_is_train=False)
+
+	insert_gaussian_noise('./data/NGSIM/prediction_train/smoothed_trajectories-0400-0415_deli_downsampled_by_4_0-1mins_no_overlap.csv')
 

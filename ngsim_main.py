@@ -338,6 +338,180 @@ def val_model(pra_model, pra_data_loader):
     all_overall_num_list = np.array(all_overall_num_list)
     return all_overall_sum_list, all_overall_num_list
 
+def val_model_save_graph(pra_model, pra_data_loader):
+    # pra_model.to(dev)
+
+    # load pre-trained params
+    params = torch.load('./trained_models/model_epoch_0049.pt')
+
+    state_dicts_list = []
+    for _index,_part in enumerate(pra_model.st_gcn_networks):
+        _temp_dict = {}
+        for _state_key in _part.state_dict().keys():
+            _temp_dict[_state_key] = params['xin_graph_seq2seq_model'][f'st_gcn_networks.{_index}.' + _state_key]
+
+        pra_model.st_gcn_networks[_index].load_state_dict(_temp_dict)
+
+
+    pra_model.eval()
+    rescale_xy = torch.ones((1, 2, 1, 1)).to(dev)
+    rescale_xy[:, 0] = max_x
+    rescale_xy[:, 1] = max_y
+    all_overall_sum_list = []
+    all_overall_num_list = []
+
+    # train model using training data
+    for iteration, (ori_data, A, _) in enumerate(pra_data_loader):
+        # data: (N, C, T, V)
+        # C = [Vehicle_ID,Frame_ID,Total_Frames,Global_Time,Local_X,Local_Y,Global_X,Global_Y,v_Length,v_Width,v_Class,
+        # v_Vel,v_Acc,Lane_ID,Preceding,Following,Space_Headway,Time_Headway]  + [mask]
+        data, no_norm_loc_data, _ = preprocess_data(ori_data, rescale_xy)
+
+        for now_history_frames in range(6, 7):
+            input_data = data[:, :, :now_history_frames, :]  # (N, C, T, V)=(N, 4, 6, 120)
+            output_loc_GT = data[:, :2, now_history_frames:, :]  # (N, C, T, V)=(N, 2, 6, 120)
+            output_mask = data[:, -1:, now_history_frames:, :]  # (N, C, T, V)=(N, 1, 6, 120)
+
+            ori_output_loc_GT = no_norm_loc_data[:, :2, now_history_frames:, :]
+            ori_output_last_loc = no_norm_loc_data[:, :2, now_history_frames - 1:now_history_frames, :]
+
+            # for category
+            cat_mask = ori_data[:, 10:11, now_history_frames:, :]  # (N, C, T, V)=(N, 1, 6, 120)
+
+            A = A.float().to(dev)
+            predicted = pra_model(pra_x=input_data, pra_A=A, pra_pred_length=output_loc_GT.shape[-2],
+                                  pra_teacher_forcing_ratio=0,
+                                  pra_teacher_location=output_loc_GT,save_graph=True,save_graph_path = f'./trainable_graph/49_epoch/{iteration}_val_graph')  # (N, C, T, V)=(N, 2, 6, 120)
+            ########################################################
+            # Compute details for training
+            ########################################################
+            predicted = predicted * rescale_xy
+            # output_loc_GT = output_loc_GT*rescale_xy
+
+            for ind in range(1, predicted.shape[-2]):
+                predicted[:, :, ind] = torch.sum(predicted[:, :, ind - 1:ind + 1], dim=-2)
+            predicted += ori_output_last_loc
+
+            ### overall dist
+            # overall_sum_time, overall_num, x2y2 = compute_RMSE(predicted, output_loc_GT, output_mask)
+            overall_sum_time, overall_num, x2y2 = compute_RMSE(predicted, ori_output_loc_GT, output_mask)
+            # all_overall_sum_list.extend(overall_sum_time.detach().cpu().numpy())
+            all_overall_num_list.extend(overall_num.detach().cpu().numpy())
+            # x2y2 (N, 6, 39)
+            now_x2y2 = x2y2.detach().cpu().numpy()
+            now_x2y2 = now_x2y2.sum(axis=-1)
+            all_overall_sum_list.extend(now_x2y2)
+
+    all_overall_sum_list = np.array(all_overall_sum_list)
+    all_overall_num_list = np.array(all_overall_num_list)
+    return all_overall_sum_list, all_overall_num_list
+
+def val_model_load_graph(pra_model, pra_data_loader):
+    # pra_model.to(dev)
+
+    # load pre-trained params
+    params = torch.load('./trained_models/model_epoch_0049.pt')
+
+
+    # state_dicts_list = []
+    # _count = 0
+    # for _index,_part in enumerate(pra_model.st_gcn_networks):
+    #     _temp_dict = {}
+    #     for _state_key in _part.state_dict().keys():
+    #         _temp_dict[_state_key] = params['xin_graph_seq2seq_model'][f'st_gcn_networks.{_index}.' + _state_key]
+    #         _count += 1
+    #     pra_model.st_gcn_networks[_index].load_state_dict(_temp_dict)
+    #
+    # _temp_dict = {}
+    # for _,_part in enumerate(pra_model.seq2seq_car.state_dict().keys()):
+    #     _temp_dict[_part] = params['xin_graph_seq2seq_model'][f'seq2seq_car.{_part}']
+    #     _count += 1
+    #
+    # pra_model.seq2seq_car.load_state_dict(_temp_dict)
+    #
+    # _temp_dict = {}
+    # for _,_part in enumerate(pra_model.seq2seq_human.state_dict().keys()):
+    #     _temp_dict[_part] = params['xin_graph_seq2seq_model'][f'seq2seq_car.{_part}']
+    #     _count += 1
+    #
+    # pra_model.seq2seq_human.load_state_dict(_temp_dict)
+    #
+    # _temp_dict = {}
+    # for _,_part in enumerate(pra_model.seq2seq_bike.state_dict().keys()):
+    #     _temp_dict[_part] = params['xin_graph_seq2seq_model'][f'seq2seq_car.{_part}']
+    #     _count += 1
+    #
+    # pra_model.seq2seq_bike.load_state_dict(_temp_dict)
+    #
+    # _edge_import = {}
+    # _edge_import['0'] = params['xin_graph_seq2seq_model']['edge_importance.0']
+    # _edge_import['1'] = params['xin_graph_seq2seq_model']['edge_importance.1']
+    # _edge_import['2'] = params['xin_graph_seq2seq_model']['edge_importance.2']
+    # _edge_import['3'] = params['xin_graph_seq2seq_model']['edge_importance.3']
+    #
+    # pra_model.edge_importance.load_state_dict(_edge_import)
+
+    _temp_dict = {}
+    for _part in pra_model.state_dict().keys():
+        if 'st_gcn_networks' in _part:
+            _temp_dict[_part.split('st_gcn_networks')[-1][1:]] = params['xin_graph_seq2seq_model'][_part]
+
+    pra_model.st_gcn_networks.load_state_dict(_temp_dict)
+
+    pra_model.eval()
+    rescale_xy = torch.ones((1, 2, 1, 1)).to(dev)
+    rescale_xy[:, 0] = max_x
+    rescale_xy[:, 1] = max_y
+    all_overall_sum_list = []
+    all_overall_num_list = []
+
+    # train model using training data
+    for iteration, (ori_data, A, _) in enumerate(pra_data_loader):
+        # data: (N, C, T, V)
+        # C = [Vehicle_ID,Frame_ID,Total_Frames,Global_Time,Local_X,Local_Y,Global_X,Global_Y,v_Length,v_Width,v_Class,
+        # v_Vel,v_Acc,Lane_ID,Preceding,Following,Space_Headway,Time_Headway]  + [mask]
+        data, no_norm_loc_data, _ = preprocess_data(ori_data, rescale_xy)
+
+        for now_history_frames in range(6, 7):
+            input_data = data[:, :, :now_history_frames, :]  # (N, C, T, V)=(N, 4, 6, 120)
+            output_loc_GT = data[:, :2, now_history_frames:, :]  # (N, C, T, V)=(N, 2, 6, 120)
+            output_mask = data[:, -1:, now_history_frames:, :]  # (N, C, T, V)=(N, 1, 6, 120)
+
+            ori_output_loc_GT = no_norm_loc_data[:, :2, now_history_frames:, :]
+            ori_output_last_loc = no_norm_loc_data[:, :2, now_history_frames - 1:now_history_frames, :]
+
+            # for category
+            cat_mask = ori_data[:, 10:11, now_history_frames:, :]  # (N, C, T, V)=(N, 1, 6, 120)
+
+            A = A.float().to(dev)
+            predicted = pra_model(pra_x=input_data, pra_A=A, pra_pred_length=output_loc_GT.shape[-2],
+                                  pra_teacher_forcing_ratio=0,
+                                  pra_teacher_location=output_loc_GT,graph=[torch.load(f'./trainable_graph/49_epoch/{iteration}_val_graph0_conv_block_graph.graph'),
+                                                                            torch.load(f'./trainable_graph/49_epoch/{iteration}_val_graph1_conv_block_graph.graph'),
+                                                                            torch.load(f'./trainable_graph/49_epoch/{iteration}_val_graph2_conv_block_graph.graph')],replace_graph=[False,False,False])  # (N, C, T, V)=(N, 2, 6, 120)
+            ########################################################
+            # Compute details for training
+            ########################################################
+            predicted = predicted * rescale_xy
+            # output_loc_GT = output_loc_GT*rescale_xy
+
+            for ind in range(1, predicted.shape[-2]):
+                predicted[:, :, ind] = torch.sum(predicted[:, :, ind - 1:ind + 1], dim=-2)
+            predicted += ori_output_last_loc
+
+            ### overall dist
+            # overall_sum_time, overall_num, x2y2 = compute_RMSE(predicted, output_loc_GT, output_mask)
+            overall_sum_time, overall_num, x2y2 = compute_RMSE(predicted, ori_output_loc_GT, output_mask)
+            # all_overall_sum_list.extend(overall_sum_time.detach().cpu().numpy())
+            all_overall_num_list.extend(overall_num.detach().cpu().numpy())
+            # x2y2 (N, 6, 39)
+            now_x2y2 = x2y2.detach().cpu().numpy()
+            now_x2y2 = now_x2y2.sum(axis=-1)
+            all_overall_sum_list.extend(now_x2y2)
+
+    all_overall_sum_list = np.array(all_overall_sum_list)
+    all_overall_num_list = np.array(all_overall_num_list)
+    return all_overall_sum_list, all_overall_num_list
 
 def test_model(pra_model, pra_data_loader):
     # pra_model.to(dev)
@@ -408,22 +582,24 @@ def run_trainval_replace_params(pra_model, pra_traindata_path, pra_testdata_path
 
     optimizer = optim.Adam([{'params': model.parameters()}, ], )  # lr = 0.0001)
 
-    for now_epoch in range(total_epoch):
+    # for now_epoch in range(total_epoch):
         # all_loader_train = itertools.chain(loader_train, loader_test)
 
-        my_print('#     - Train -    #', log_file)
+        # my_print('#     - Train -    #', log_file)
+
         # train_model(pra_model, loader_train, pra_optimizer=optimizer,
         #             pra_epoch_log='Epoch:{:>4}/{:>4}'.format(now_epoch, total_epoch))
-        train_model_save_weights(pra_model, loader_train, pra_optimizer=optimizer,
-                    pra_epoch_log='Epoch:{:>4}/{:>4}'.format(now_epoch, total_epoch), current_epoch=now_epoch)
 
-        my_save_model(pra_model, now_epoch, work_dir)
+        # train_model_save_weights(pra_model, loader_train, pra_optimizer=optimizer,
+        #             pra_epoch_log='Epoch:{:>4}/{:>4}'.format(now_epoch, total_epoch), current_epoch=now_epoch)
 
-        my_print('#     - Test -    #', log_file)
+        # my_save_model(pra_model, now_epoch, work_dir)
 
-        display_result(
-            val_model(pra_model, loader_val), log_file,
-            pra_pref='{}_Epoch{}'.format('Val', now_epoch)
+    my_print('#     - Test -    #', log_file)
+
+    display_result(
+            val_model_load_graph(pra_model, loader_val), log_file,
+            pra_pref='{}_Epoch{}'.format('Val', 0)
         )
         # if now_epoch == 1:
         #     display_result(
@@ -475,41 +651,41 @@ def run_test(pra_model, pra_data_path):
 
 if __name__ == '__main__':
     graph_args = {'max_hop': 2, 'num_node': 200}
-    model = GRIPModel(in_channels=6, graph_args=graph_args, edge_importance_weighting=True)
-    # model = GRIPModel_with_replaced_graph_param(in_channels=6, graph_args=graph_args, edge_importance_weighting=True)
+    # model = GRIPModel(in_channels=6, graph_args=graph_args, edge_importance_weighting=True)
+    model = GRIPModel_with_replaced_graph_param(in_channels=6, graph_args=graph_args, edge_importance_weighting=True)
     model.to(dev)
 
-    pkl_files = [
-        './training_data/smoothed_trajectories-0400-0415_deli_downsampled_by_4_0-6mins_noised_local_x_local_y.pkl',
-        './training_data/smoothed_trajectories-0400-0415_deli_downsampled_by_4_0-1mins_no_overlap.pkl',
-        './training_data/smoothed_trajectories-0400-0415_deli_downsampled_by_4_1-2mins_no_overlap.pkl',
-        './training_data/smoothed_trajectories-0400-0415_deli_downsampled_by_4_2-3mins_no_overlap.pkl',
-        './training_data/smoothed_trajectories-0400-0415_deli_downsampled_by_4_3-4mins_no_overlap.pkl',
-        './training_data/smoothed_trajectories-0400-0415_deli_downsampled_by_4_4-5mins_no_overlap.pkl',
-        './training_data/smoothed_trajectories-0400-0415_deli_downsampled_by_4_5-6mins_no_overlap.pkl',
-        './training_data/smoothed_trajectories-0400-0415_deli_downsampled_by_4_6-7mins_no_overlap.pkl',
-        './training_data/smoothed_trajectories-0400-0415_deli_downsampled_by_4_7-8mins_no_overlap.pkl',
-        './training_data/smoothed_trajectories-0400-0415_deli_downsampled_by_4_8-9mins_no_overlap.pkl',
-        './training_data/smoothed_trajectories-0400-0415_deli_downsampled_by_4_9-10mins_no_overlap.pkl',
-        './training_data/smoothed_trajectories-0400-0415_deli_downsampled_by_4_10-11mins_no_overlap.pkl',
-        './training_data/smoothed_trajectories-0400-0415_deli_downsampled_by_4_11-12mins_no_overlap.pkl',
-        './training_data/smoothed_trajectories-0400-0415_deli_downsampled_by_4_12-13mins_no_overlap.pkl',
-        './training_data/smoothed_trajectories-0400-0415_deli_downsampled_by_4_13-14mins_no_overlap.pkl',
-        './training_data/smoothed_trajectories-0400-0415_deli_downsampled_by_4_14-15mins_no_overlap.pkl'
-                 ]
-
     # pkl_files = [
-    #     './training_data/'
-    # ]
+    #     './training_data/smoothed_trajectories-0400-0415_deli_downsampled_by_4_0-6mins_noised_local_x_local_y.pkl',
+    #     './training_data/smoothed_trajectories-0400-0415_deli_downsampled_by_4_0-1mins_no_overlap.pkl',
+    #     './training_data/smoothed_trajectories-0400-0415_deli_downsampled_by_4_1-2mins_no_overlap.pkl',
+    #     './training_data/smoothed_trajectories-0400-0415_deli_downsampled_by_4_2-3mins_no_overlap.pkl',
+    #     './training_data/smoothed_trajectories-0400-0415_deli_downsampled_by_4_3-4mins_no_overlap.pkl',
+    #     './training_data/smoothed_trajectories-0400-0415_deli_downsampled_by_4_4-5mins_no_overlap.pkl',
+    #     './training_data/smoothed_trajectories-0400-0415_deli_downsampled_by_4_5-6mins_no_overlap.pkl',
+    #     './training_data/smoothed_trajectories-0400-0415_deli_downsampled_by_4_6-7mins_no_overlap.pkl',
+    #     './training_data/smoothed_trajectories-0400-0415_deli_downsampled_by_4_7-8mins_no_overlap.pkl',
+    #     './training_data/smoothed_trajectories-0400-0415_deli_downsampled_by_4_8-9mins_no_overlap.pkl',
+    #     './training_data/smoothed_trajectories-0400-0415_deli_downsampled_by_4_9-10mins_no_overlap.pkl',
+    #     './training_data/smoothed_trajectories-0400-0415_deli_downsampled_by_4_10-11mins_no_overlap.pkl',
+    #     './training_data/smoothed_trajectories-0400-0415_deli_downsampled_by_4_11-12mins_no_overlap.pkl',
+    #     './training_data/smoothed_trajectories-0400-0415_deli_downsampled_by_4_12-13mins_no_overlap.pkl',
+    #     './training_data/smoothed_trajectories-0400-0415_deli_downsampled_by_4_13-14mins_no_overlap.pkl',
+    #     './training_data/smoothed_trajectories-0400-0415_deli_downsampled_by_4_14-15mins_no_overlap.pkl'
+    #              ]
+
+    pkl_files = [
+        './training_data/smoothed_trajectories-0400-0415_deli_downsampled_by_4_0-6mins.pkl'
+    ]
 
 
     # train and evaluate model
     for pkl in pkl_files:
         print(f'Starting to train on {pkl} ...')
-        run_trainval(model, pkl, './test_data.pkl', graph_args)
+        run_trainval_replace_params(model, pkl, './test_data.pkl', graph_args)
         # run_trainval_replace_params(model, pkl, './test_data.pkl',graph_args)
-        renamed = 'log_' + os.path.basename(pkl).split('.')[0] + '.txt'
-        os.rename('./trained_models/log.txt',f'./training_log/{renamed}')
+        # renamed = 'log_' + os.path.basename(pkl).split('.')[0] + '.txt'
+        # os.rename('./trained_models/log.txt',f'./training_log/{renamed}')
 
 
 

@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 from scipy.spatial import distance
-# from fastdtw import fastdtw
+from fastdtw import fastdtw
 from functools import partial
 from datetime import datetime
 from typing import List, Set, Union
@@ -20,38 +20,41 @@ def prepare_trace(id: str, start_time: str, end_time: str, file_path: str) -> np
         _cols = _line.split(',')
         _current_id = _cols[0]
         _current_time = _cols[3]
-        if int(_line.split(',')[0]) == int(id) and int(_current_time) >= int(start_time) and int(_current_time) <= int(end_time):
-            _inserted = np.array([float(_val) for _col_index,_val in enumerate(_cols) if _col_index in [4, 5, 11, 12]])
+        if int(_line.split(',')[0]) == int(id) and int(_current_time) >= int(start_time) and int(_current_time) <= int(
+                end_time):
+            _inserted = np.array([float(_val) for _col_index, _val in enumerate(_cols) if _col_index in [4, 5, 11, 12]])
 
             if _line_index >= 1:
-                _previous_pos = [float(_p) for _p in contents[_line_index-1].split(',')[4:6]]
+                _previous_pos = [float(_p) for _p in contents[_line_index - 1].split(',')[4:6]]
                 _current_pos = [float(_p) for _p in _cols[4:6]]
                 _direction = np.array(_current_pos) - np.array(_previous_pos)
                 _direction = _direction / np.linalg.norm(_direction)
                 _inserted = np.append(_inserted, _direction)
             else:
-                _inserted = np.append(_inserted, np.array([0.0,0.0]))
+                _inserted = np.append(_inserted, np.array([0.0, 0.0]))
 
             _resulted_trace.append(_inserted)
 
     return _resulted_trace
 
 
-def generate_dtw_distance(trace1: List[Union[float,List[float]]], trace2: List[Union[float,List[float]]]):
+def generate_dtw_distance(trace1: List[Union[float, List[float]]], trace2: List[Union[float, List[float]]]):
     assert len(trace1) > 0
     assert len(trace2) > 0
+
     def worker(pos1: np.array, pos2: np.array):
         _total_euclidean_distance = 0.0
-        _total_euclidean_distance += np.sum((pos1[0:4] - pos2[0:4])**2)
+        _total_euclidean_distance += np.sum((pos1[0:4] - pos2[0:4]) ** 2)
         _total_euclidean_distance += distance.euclidean(pos1[4:], pos2[4:])
         return _total_euclidean_distance
+
     # prepare two traces
-    return fastdtw(trace1, trace2, dist = worker)
+    return fastdtw(trace1, trace2, dist=worker)
 
 
-def get_density_metric(file_path: str):
+def get_density_metric(file_path):
     assert os.path.exists(file_path)
-    
+
     with open(file_path, 'r') as reader:
         # print(train_file_path)
         content = np.array([x.strip().split(',') for x in reader.readlines()]).astype(float)
@@ -63,17 +66,17 @@ def get_density_metric(file_path: str):
     density = []
     for _frame_id, _vehs in now_dict.items():
         density.append((_frame_id, len(_vehs)))
-    density = sorted(density, key = lambda den: den[0])
-    
+    density = sorted(density, key=lambda den: den[0])
+
     avg_density = 0
     for (_frame_id, _den) in density:
         avg_density += _den
     avg_density = avg_density / len(density)
-    
+
     return density, avg_density
-    
-    
-def get_veh_metrics(file_path: str):
+
+
+def get_veh_metrics(file_path):
     assert os.path.exists(file_path)
     with open(file_path, 'r') as reader:
         contents = reader.readlines()
@@ -113,28 +116,32 @@ def get_veh_metrics(file_path: str):
     for _veh_id in vehicle_dict.keys():
         vehicle_dict[_veh_id]['vel_mean'] = np.mean(vehicle_dict[_veh_id]['vel'])
         vehicle_dict[_veh_id]['acc_mean'] = np.mean(vehicle_dict[_veh_id]['acc'])
-    
+
     _veh_vel_means = []
     _veh_acc_means = []
     for _veh_id in vehicle_dict.keys():
         _veh_vel_means.append(vehicle_dict[_veh_id]['vel_mean'])
         _veh_acc_means.append(vehicle_dict[_veh_id]['acc_mean'])
     vehicle_dict['vel_mean'] = np.mean(_veh_vel_means)
-    vehicle_dict['vel_acc'] = np.mean(_veh_acc_means)
+    vehicle_dict['acc_mean'] = np.mean(_veh_acc_means)
 
-    return vehicle_dict, start_timestamp, end_timestamp
+    durance = end_timestamp - start_timestamp
+
+    return vehicle_dict, start_timestamp, end_timestamp, durance
 
 
 def get_coeffs():
     coeffs = {}
-    
+
     coeffs['MEAN_VEL_COEFF'] = 0.1
     coeffs['MEAN_ACC_COEFF'] = 0.1
     coeffs['MEAN_DENSITY_COEFF'] = 0.1
     coeffs['MEAN_PARAM_COEFF'] = 0.9
-    
+
     return coeffs
-def prepare_metrics(client_paths: list[str], server_path: str):
+
+
+def prepare_metrics(client_paths, server_path):
     clients = {
         "vel_mean": [],
         "acc_mean": [],
@@ -144,30 +151,50 @@ def prepare_metrics(client_paths: list[str], server_path: str):
     server_veh_dict, _, _ = get_veh_metrics(server_path)
     _, server_avg_density = get_density_metric(server_path)
     server["vel_mean"] = server_veh_dict["vel_mean"]
-    server["acc_mean"] = server_veh_dict["acc_mean"] 
+    server["acc_mean"] = server_veh_dict["acc_mean"]
     server["density_mean"] = server_avg_density
-    
+
     for _ind, _path in enumerate(client_paths):
-        _temp_client_veh_dict, _, _ = get_veh_metrics(_path)
-        _, _temp_client_avg_density = get_density_metric(_path)
-        clients["vel_mean"][_c] = _temp_client_veh_dict["vel_mean"]
-        clients["acc_mean"][_c] = _temp_client_veh_dict["acc_mean"]
-        clients["density_mean"][_c] = _temp_client_avg_density
-    
+        if isinstance(_path, list):
+            _temp_client_veh_dict_li = []
+            _temp_client_avg_density_li = []
+            for _p in _path:
+                _temp_client_veh_dict, _, _ = get_veh_metrics(_p)
+                _, _temp_client_avg_density = get_density_metric(_p)
+
+                _temp_client_veh_dict_li.append(_temp_client_veh_dict)
+                _temp_client_avg_density_li.append(_temp_client_avg_density)
+
+            _temp_client_vel_mean_li = [v["vel_mean"] for v in _temp_client_veh_dict_li]
+            _temp_client_acc_mean_li = [v["acc_mean"] for v in _temp_client_veh_dict_li]
+            clients["vel_mean"].append(np.mean(_temp_client_vel_mean_li))
+            clients["acc_mean"].append(np.mean(_temp_client_acc_mean_li))
+            clients["density_mean"].append(np.mean(_temp_client_avg_density_li))
+        else:
+            _temp_client_veh_dict, _, _ = get_veh_metrics(_path)
+            _, _temp_client_avg_density = get_density_metric(_path)
+
+            clients["vel_mean"].append(_temp_client_veh_dict["vel_mean"])
+            clients["acc_mean"].append(_temp_client_veh_dict["acc_mean"])
+            clients["density_mean"].append(_temp_client_avg_density)
+
     return clients, server
-    
-    
+
+
+
 
 if __name__ == '__main__':
-    veh, start, end = get_veh_metrics('./smoothed_trajectories-0400-0415_deli_downsampled_by_4_0-1mins_no_overlap.csv')
-    pass
 
+    # trace1 = prepare_trace('1', '1113433143600', '1113433191600', './data/NGSIM/prediction_train/smoothed_trajectories-0400-0415_deli_downsampled_by_4_0-1mins_no_overlap.csv')
+    # trace2 = prepare_trace('2', '1113433169200', '1113433196200', './data/NGSIM/prediction_train/smoothed_trajectories-0400-0415_deli_downsampled_by_4_0-1mins_no_overlap.csv')
+    # print(generate_dtw_distance(trace1, trace2)[0])
 
+    clients = [
+        ['data/NGSIM/prediction_train/smoothed_trajectories-0400-0415_deli_downsampled_by_4_0-1mins_no_overlap.csv',
+        'data/NGSIM/prediction_train/smoothed_trajectories-0400-0415_deli_downsampled_by_4_1-2mins_no_overlap.csv',
+        'data/NGSIM/prediction_train/smoothed_trajectories-0400-0415_deli_downsampled_by_4_2-3mins_no_overlap.csv']
+    ]
 
+    server = 'data/NGSIM/prediction_train/smoothed_trajectories-0400-0415_deli_downsampled_by_4_5-6mins_no_overlap.csv'
 
-
-# if __name__ == '__main__':
-
-#     trace1 = prepare_trace('1', '1113433143600', '1113433191600', './data/NGSIM/prediction_train/smoothed_trajectories-0400-0415_deli_downsampled_by_4_0-1mins_no_overlap.csv')
-#     trace2 = prepare_trace('2', '1113433169200', '1113433196200', './data/NGSIM/prediction_train/smoothed_trajectories-0400-0415_deli_downsampled_by_4_0-1mins_no_overlap.csv')
-#     print(generate_dtw_distance(trace1, trace2)[0])
+    c_metrics, s_metrics = prepare_metrics(clients, server)

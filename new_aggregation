@@ -125,9 +125,7 @@ def get_veh_metrics(file_path):
     vehicle_dict['vel_mean'] = np.mean(_veh_vel_means)
     vehicle_dict['acc_mean'] = np.mean(_veh_acc_means)
 
-    durance = end_timestamp - start_timestamp
-
-    return vehicle_dict, start_timestamp, end_timestamp, durance
+    return vehicle_dict, start_timestamp, end_timestamp
 
 
 def get_coeffs():
@@ -145,40 +143,83 @@ def prepare_metrics(client_paths, server_path):
     clients = {
         "vel_mean": [],
         "acc_mean": [],
-        "density_mean": []
+        "density_mean": [],
+        "time_endurance": [],
+        "num_of_vehs": []
     }
     server = {}
-    server_veh_dict, _, _ = get_veh_metrics(server_path)
-    _, server_avg_density = get_density_metric(server_path)
+    server_veh_dict, server_start_time, server_end_time = get_veh_metrics(server_path)
+    server_density, server_avg_density = get_density_metric(server_path)
     server["vel_mean"] = server_veh_dict["vel_mean"]
     server["acc_mean"] = server_veh_dict["acc_mean"]
     server["density_mean"] = server_avg_density
+    server["time_endurance"] = server_end_time - server_start_time
+    server["num_of_vehs"] = len(server_veh_dict.keys())
 
     for _ind, _path in enumerate(client_paths):
         if isinstance(_path, list):
             _temp_client_veh_dict_li = []
             _temp_client_avg_density_li = []
+            _temp_client_total_time = 0
+            _temp_client_total_num_vehs = 0
             for _p in _path:
-                _temp_client_veh_dict, _, _ = get_veh_metrics(_p)
-                _, _temp_client_avg_density = get_density_metric(_p)
+                _temp_client_veh_dict, _temp_client_start_time, _temp_client_end_time = get_veh_metrics(_p)
+                _temp_client_density, _temp_client_avg_density = get_density_metric(_p)
 
                 _temp_client_veh_dict_li.append(_temp_client_veh_dict)
                 _temp_client_avg_density_li.append(_temp_client_avg_density)
+                _temp_client_total_time += (_temp_client_end_time - _temp_client_start_time)
+                _temp_client_total_num_vehs += len(_temp_client_veh_dict.keys())
 
             _temp_client_vel_mean_li = [v["vel_mean"] for v in _temp_client_veh_dict_li]
             _temp_client_acc_mean_li = [v["acc_mean"] for v in _temp_client_veh_dict_li]
             clients["vel_mean"].append(np.mean(_temp_client_vel_mean_li))
             clients["acc_mean"].append(np.mean(_temp_client_acc_mean_li))
             clients["density_mean"].append(np.mean(_temp_client_avg_density_li))
+            clients["time_endurance"].append(_temp_client_total_time)
+            clients["num_of_vehs"].append(_temp_client_total_num_vehs)
         else:
-            _temp_client_veh_dict, _, _ = get_veh_metrics(_path)
-            _, _temp_client_avg_density = get_density_metric(_path)
+            _temp_client_veh_dict, _temp_client_start_time, _temp_client_end_time = get_veh_metrics(_path)
+            _temp_client_density, _temp_client_avg_density = get_density_metric(_path)
+            _temp_client_time = _temp_client_end_time - _temp_client_start_time
 
             clients["vel_mean"].append(_temp_client_veh_dict["vel_mean"])
             clients["acc_mean"].append(_temp_client_veh_dict["acc_mean"])
             clients["density_mean"].append(_temp_client_avg_density)
+            clients["time_endurance"].append(_temp_client_time)
+            clients["num_of_vehs"].append(len(_temp_client_veh_dict.keys()))
 
     return clients, server
+
+def split_area(num_of_splits: int):
+    """
+    split the x into 10 areas
+    split the y into 10 areas
+    Args:
+        num_of_splits
+
+    Returns:
+
+    """
+    return [set() for _ in range(num_of_splits)], [set() for _ in range(num_of_splits)]
+
+def spit_into_areas(path: str):
+    assert os.path.exists(path)
+
+    with open(path, 'r') as reader:
+        # print(train_file_path)
+        content = np.array([x.strip().split(',') for x in reader.readlines()]).astype(float)
+        now_dict = {}
+        for row in content:
+            n_dict = now_dict.get(row[1], {})
+            n_dict[row[0]] = row  # [2:]
+            now_dict[row[1]] = n_dict
+
+    frame_id_sorted = sorted(now_dict.keys())
+    seprated_area_dict = {}
+    for _frame_id in frame_id_sorted:
+        for _veh_id in now_dict[_frame_id].keys():
+            pass
 
 
 
